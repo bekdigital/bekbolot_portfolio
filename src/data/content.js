@@ -24,11 +24,10 @@ export const profile = {
     ru: '24 года военной службы, опыт работы в миссии ООН и обеспечения безопасности дипломатических представительств: стратегическое планирование и практическая работа.',
   },
   email: 'bekbolot.tolomushov@gmail.com',
-  // TODO: replace with your LinkedIn profile URL
-  linkedin: 'https://www.linkedin.com/in/your-profile',
+  linkedin: 'https://www.linkedin.com/in/bek-tolo1/',
   // Files in the /public folder
   cvFile: '/Bekbolot_Tolomushov_CV.pdf',
-  photo: '/profile-placeholder.svg', // replace with e.g. '/profile.jpg'
+  photo: '/profile.jpg',
   photoAlt: {
     en: 'Portrait of Bekbolot Tolomushov',
     ru: 'Портрет Бекболота Толомушова',

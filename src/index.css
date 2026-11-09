@@ -17,6 +17,10 @@
   :focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-navy-950;
   }
+  /* Header and footer are always dark, so the focus ring offset matches them */
+  .site-chrome :focus-visible {
+    @apply ring-offset-navy-900 dark:ring-offset-navy-975;
+  }
   main:focus {
     outline: none;
   }
@@ -99,6 +103,7 @@
     font-size: 11pt;
   }
   .no-print, .skip-link, header, svg[aria-hidden='true'] { display: none !important; }
+  footer { background: none !important; border-top: 1px solid #ccc !important; }
   .print-only { display: block !important; }
 
   /* Show all content without animations */

@@ -21,6 +21,7 @@ export default {
           800: '#152440',
           900: '#0E1B33',
           950: '#0B1628',
+          975: '#050B16', // header & footer in dark mode
         },
         // Single accent colour: UN blue
         accent: {

@@ -9,7 +9,7 @@ const NAV_IDS = ['about', 'experience', 'education', 'training', 'languages', 's
 function LanguageSwitcher() {
   const { lang, setLang, t } = useApp()
   return (
-    <div role="group" aria-label={t(ui.languageLabel)} className="flex rounded-full border border-navy-200 p-0.5 text-xs font-semibold dark:border-navy-700">
+    <div role="group" aria-label={t(ui.languageLabel)} className="flex rounded-full border border-navy-600 p-0.5 text-xs font-semibold">
       {['en', 'ru'].map((code) => (
         <button
           key={code}
@@ -20,8 +20,8 @@ function LanguageSwitcher() {
           aria-label={code === 'en' ? 'English' : 'Русский'}
           className={`rounded-full px-2.5 py-1 uppercase transition-colors ${
             lang === code
-              ? 'bg-accent-dark text-white dark:bg-accent dark:text-navy-950'
-              : 'text-navy-600 hover:text-navy-950 dark:text-navy-200 dark:hover:text-white'
+              ? 'bg-accent text-navy-950'
+              : 'text-navy-200 hover:text-white'
           }`}
         >
           {code}
@@ -40,7 +40,7 @@ function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={t(isDark ? ui.switchToLight : ui.switchToDark)}
       title={t(isDark ? ui.switchToLight : ui.switchToDark)}
-      className="rounded-full p-2 text-navy-600 transition-colors hover:bg-navy-100 hover:text-navy-950 dark:text-navy-200 dark:hover:bg-navy-800 dark:hover:text-white"
+      className="rounded-full p-2 text-navy-200 transition-colors hover:bg-navy-800 hover:text-white"
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
@@ -71,23 +71,19 @@ export default function Navbar() {
   const linkClass = (id) =>
     `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
       active === id
-        ? 'text-accent-dark dark:text-accent-light'
-        : 'text-navy-600 hover:text-navy-950 dark:text-navy-200 dark:hover:text-white'
+        ? 'text-accent-light'
+        : 'text-navy-200 hover:text-white'
     }`
 
   return (
     <header
-      className={`no-print fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        open
-          ? 'border-b border-navy-100 bg-white shadow-sm dark:border-navy-800 dark:bg-navy-950'
-          : scrolled
-            ? 'border-b border-navy-100 bg-white/90 shadow-sm backdrop-blur-md dark:border-navy-800 dark:bg-navy-950/90'
-            : 'bg-transparent'
+      className={`site-chrome no-print fixed inset-x-0 top-0 z-50 border-b border-navy-800 bg-navy-900 transition-shadow duration-300 dark:border-navy-800/60 dark:bg-navy-975 ${
+        scrolled || open ? 'shadow-lg shadow-navy-950/20' : ''
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-5 sm:px-8">
-        <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight text-navy-950 dark:text-white">
-          <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-md bg-accent-dark text-sm text-white dark:bg-accent dark:text-navy-950">
+        <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight text-white">
+          <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-md bg-accent text-sm text-navy-950">
             BT
           </span>
           <span className="hidden sm:inline">{t(profile.name)}</span>
@@ -109,7 +105,7 @@ export default function Navbar() {
           <ThemeToggle />
           <button
             type="button"
-            className="rounded-full p-2 text-navy-700 hover:bg-navy-100 dark:text-navy-100 dark:hover:bg-navy-800 lg:hidden"
+            className="rounded-full p-2 text-navy-100 hover:bg-navy-800 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={t(open ? ui.closeMenu : ui.openMenu)}
@@ -122,7 +118,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <ul id="mobile-menu" className="border-t border-navy-100 px-5 pb-4 pt-2 dark:border-navy-800 lg:hidden">
+        <ul id="mobile-menu" className="border-t border-navy-800 px-5 pb-4 pt-2 lg:hidden">
           {NAV_IDS.map((id) => (
             <li key={id}>
               <a href={`#${id}`} onClick={() => setOpen(false)} className={`block ${linkClass(id)} py-3 text-base`}>

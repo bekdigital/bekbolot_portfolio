@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal'
 export default function Skills() {
   const { t } = useApp()
   return (
-    <Section id="skills" eyebrow={sections.skills.eyebrow} title={sections.skills.title}>
+    <Section id="skills" eyebrow={sections.skills.eyebrow} title={sections.skills.title} className="section-alt">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {skills.map((group, i) => (
           <Reveal key={i} delay={(i % 3) * 80} className="card p-6">

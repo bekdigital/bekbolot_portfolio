@@ -61,7 +61,16 @@ export const ui = {
   achievements: { en: 'Key achievements', ru: 'Достижения' },
   showDetails: { en: 'Show details', ru: 'Подробнее' },
   hideDetails: { en: 'Hide details', ru: 'Скрыть' },
-  thesis: { en: 'Thesis', ru: 'Диссертация' },
+  thesis: { en: "Master's thesis", ru: 'Магистерская диссертация' },
+  publication: { en: 'Publication', ru: 'Публикация' },
+  readPublication: { en: 'Read the article', ru: 'Читать статью' },
+  learnMore: { en: 'Learn more', ru: 'Подробнее' },
+  studied: { en: 'Studied', ru: 'Период обучения' },
+  graduated: { en: 'Graduated', ru: 'Выпуск' },
+  place: { en: 'Location', ru: 'Место' },
+  academicEducation: { en: 'Academic education', ru: 'Академическое образование' },
+  coursesHeading: { en: 'Courses & certificates', ru: 'Курсы и сертификаты' },
+  originalName: { en: 'Original name', ru: 'Оригинальное название' },
   comingSoon: { en: 'Details coming soon', ru: 'Подробности скоро' },
   visit: { en: 'Visit', ru: 'Открыть' },
   backToTop: { en: 'Back to top', ru: 'Наверх' },
@@ -417,51 +426,103 @@ export const experience = [
 ]
 
 // ---------------------------------------------------------------------------
-// Education. `details` is optional (shown under the institution).
+// Education
+//
+// Part 1: academic education. Each institution has:
+//   names     – name in the original language(s), in English and in Russian
+//   image     – photo file in /public/education/ ('' shows a placeholder)
+//   imageCredit – { text, url }: author and licence of the photo (required for
+//                 Wikimedia photos; use null for your own photos)
+//   about     – one short sentence about the school
+//   website   – official website ("Learn more" button)
+//   studied   – years of study; graduated – graduation year
+//   publication – optional { title, journal, url }
 // ---------------------------------------------------------------------------
 export const education = [
   {
-    degree: { en: 'Master of Arts in Management', ru: 'Магистр менеджмента' },
-    institution: { en: 'Kyrgyz-Turkish Manas University', ru: 'Кыргызско-Турецкий университет «Манас»' },
+    names: {
+      original: 'Kırgızistan-Türkiye Manas Üniversitesi',
+      originalAlt: 'Кыргыз-Түрк «Манас» университети',
+      en: 'Kyrgyz-Turkish Manas University',
+      ru: 'Кыргызско-Турецкий университет «Манас»',
+    },
     location: { en: 'Bishkek, Kyrgyz Republic', ru: 'Бишкек, Кыргызская Республика' },
-    years: '2021 – 2024',
+    image: '/education/manas.jpg',
+    imageCredit: {
+      text: 'Photo: Эрнист, Wikimedia Commons, public domain',
+      url: 'https://commons.wikimedia.org/wiki/File:Manas_University.jpg',
+    },
+    about: {
+      en: 'A state university in Bishkek founded jointly by the Kyrgyz Republic and the Republic of Türkiye in 1995.',
+      ru: 'Государственный университет в Бишкеке, основанный совместно Кыргызской Республикой и Турецкой Республикой в 1995 году.',
+    },
+    website: 'https://manas.edu.kg/en',
+    degree: { en: 'Master of Arts in Management', ru: 'Магистр менеджмента' },
+    studied: '2021 – 2024',
+    graduated: '2024',
     thesis: {
       en: 'Performance Appraisal Systems for Military Officers',
       ru: 'Системы оценки служебной деятельности военных офицеров',
     },
+    publication: {
+      title: 'Performance Evaluation of Officers in the Kyrgyz Republic Armed Forces: A Comparison with NATO and CSTO Countries',
+      journal: 'MANAS Journal of Social Studies, Vol. 13, No. 3 (2024), pp. 1048–1065',
+      url: 'https://doi.org/10.33206/mjss.1414018',
+    },
   },
   {
+    names: {
+      original: 'Führungsakademie der Bundeswehr',
+      en: 'Bundeswehr Command and Staff College',
+      ru: 'Командно-штабная академия Бундесвера',
+    },
+    location: { en: 'Hamburg, Germany', ru: 'Гамбург, Германия' },
+    image: '/education/fuehrungsakademie.jpg',
+    imageCredit: {
+      text: 'Photo: David Wintzer, Wikimedia Commons, CC BY-SA 4.0',
+      url: 'https://commons.wikimedia.org/wiki/File:Kasernentor_F%C3%BChrungsakademie_der_Bundeswehr_2019.jpg',
+    },
+    about: {
+      en: 'The highest military education institution of the German Armed Forces, training senior staff officers from Germany and partner nations.',
+      ru: 'Высшее военно-учебное заведение Вооружённых сил Германии, готовящее офицеров штабов из Германии и стран-партнёров.',
+    },
+    website: 'https://www.bundeswehr.de/en/organization/bundeswehr-command-and-staff-college',
     degree: {
       en: 'General Staff Officer (Military and Security Policy)',
       ru: 'Офицер Генерального штаба (военная политика и политика безопасности)',
     },
-    institution: {
-      en: 'Armed Forces Command and Staff College (Führungsakademie der Bundeswehr)',
-      ru: 'Командно-штабная академия Бундесвера (Führungsakademie der Bundeswehr)',
-    },
-    location: { en: 'Hamburg, Germany', ru: 'Гамбург, Германия' },
-    years: '2016 – 2018',
+    studied: '2016 – 2018',
+    graduated: '2018',
     details: {
       en: 'Operational planning at brigade and division level; planning and conduct of peacekeeping operations.',
       ru: 'Оперативное планирование на уровне бригады и дивизии; планирование и проведение миротворческих операций.',
     },
   },
   {
+    names: {
+      original: 'Kara Harp Okulu',
+      en: 'Turkish Military Academy',
+      ru: 'Военная академия Сухопутных войск Турции',
+    },
+    location: { en: 'Ankara, Türkiye', ru: 'Анкара, Турция' },
+    image: '', // TODO: add your own photo, e.g. '/education/kho.jpg' in /public/education/
+    imageCredit: null,
+    about: {
+      en: "Türkiye's army officer academy, founded in 1834. It trains officers for the Turkish Land Forces and is part of the National Defence University.",
+      ru: 'Военная академия Сухопутных войск Турции, основанная в 1834 году. Готовит офицеров Сухопутных войск и входит в состав Национального университета обороны.',
+    },
+    website: 'https://kho.msu.edu.tr/',
     degree: {
       en: "Bachelor's Degree in Military Command and Management",
       ru: 'Бакалавр военного командования и управления',
     },
-    institution: {
-      en: 'Turkish Land Forces Academy (Kara Harp Okulu)',
-      ru: 'Академия Сухопутных войск Турции (Kara Harp Okulu)',
-    },
-    location: { en: 'Ankara, Türkiye', ru: 'Анкара, Турция' },
-    years: '1997 – 2002',
+    studied: '1997 – 2002',
+    graduated: '2002',
   },
 ]
 
 // ---------------------------------------------------------------------------
-// Training & certificates
+// Education part 2: courses & certificates
 // ---------------------------------------------------------------------------
 export const training = [
   {

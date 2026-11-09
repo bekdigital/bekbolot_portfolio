@@ -33,7 +33,7 @@ function LanguageBar({ language }) {
 
 export default function Languages() {
   return (
-    <Section id="languages" eyebrow={sections.languages.eyebrow} title={sections.languages.title} className="section-alt">
+    <Section id="languages" eyebrow={sections.languages.eyebrow} title={sections.languages.title}>
       <Reveal>
         <ul className="grid gap-x-12 gap-y-7 sm:grid-cols-2">
           {languages.map((l, i) => (

@@ -7,7 +7,7 @@ import { ExternalIcon } from '../components/Icons'
 export default function Projects() {
   const { t } = useApp()
   return (
-    <Section id="projects" eyebrow={sections.projects.eyebrow} title={sections.projects.title} className="section-alt">
+    <Section id="projects" eyebrow={sections.projects.eyebrow} title={sections.projects.title}>
       <ul className="grid gap-6 sm:grid-cols-2">
         {projects.map((p, i) => (
           <Reveal as="li" key={i} delay={(i % 2) * 80} className="card flex flex-col overflow-hidden">

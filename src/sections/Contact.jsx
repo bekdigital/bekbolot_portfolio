@@ -24,7 +24,7 @@ export default function Contact() {
   const labelClass = 'mb-1.5 block text-sm font-medium text-navy-700 dark:text-navy-100'
 
   return (
-    <Section id="contact" eyebrow={sections.contact.eyebrow} title={sections.contact.title} intro={sections.contact.intro}>
+    <Section id="contact" eyebrow={sections.contact.eyebrow} title={sections.contact.title} intro={sections.contact.intro} className="section-alt">
       <div className="grid gap-10 lg:grid-cols-[2fr_3fr]">
         <Reveal>
           <ul className="space-y-5">

@@ -24,6 +24,7 @@ npm run preview  # preview the production build locally
 
 - Text in two languages is written as `{ en: '...', ru: '...' }`.
 - To add a job, course, skill or project, copy an existing item in its list and edit it.
+- Education has two parts: `education` (academic: names in the original language, English and Russian, photo, study period, publication) and `training` (courses & certificates).
 - Jobs use `MM/YYYY` dates. Leave `end: ''` for a current job ("present").
 - A project with `url: ''` shows "Details coming soon".
 
@@ -31,9 +32,9 @@ npm run preview  # preview the production build locally
 
 | What | Where |
 |---|---|
-| Professional photo | Add e.g. `public/profile.jpg` (square, at least 512×512 px), then set `photo: '/profile.jpg'` in `content.js`. |
+| Professional photo | Replace `public/profile.jpg` (square, at least 512×512 px). |
 | CV | Replace `public/Bekbolot_Tolomushov_CV.pdf` (keep the same file name). |
-| LinkedIn | `profile.linkedin` in `content.js`. |
+| School photos | Files in `public/education/`; set `image` and `imageCredit` for each school in `education` in `content.js`. |
 | Project links and images | `projects` in `content.js` (`url`, and optionally `image`, e.g. `/projects/alchik.jpg` in `public/projects/`). |
 | Website address | The `canonical`, `og:url` and `og:image` URLs in `index.html` after you deploy. |
 | Social preview image (optional) | `public/og-image.png` (1200×630 px). |
@@ -58,7 +59,7 @@ src/data/content.js     ← ALL content (EN + RU)
 src/context/            language + theme state (t() picks the right language)
 src/hooks/              scroll-reveal and active-section helpers
 src/components/         Navbar, Footer, Section, Reveal, icons, mountains
-src/sections/           one file per page section
+src/sections/           one file per page section (Education also holds the courses list)
 src/index.css           Tailwind, shared styles, animations, print styles
 tailwind.config.js      colours (navy + UN blue accent) and font
 ```

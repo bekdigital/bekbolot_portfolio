@@ -80,14 +80,15 @@
 .hero-fade {
   animation: fade-up 0.8s ease both;
 }
-.job-panel:not([hidden]) {
+.job-panel:not([hidden]),
+.expand-panel:not([hidden]) {
   animation: fade-up 0.35s ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
-  .hero-fade, .job-panel:not([hidden]) { animation: none; }
+  .hero-fade, .job-panel:not([hidden]), .expand-panel:not([hidden]) { animation: none; }
   .lang-bar { transition: none !important; }
 }
 
@@ -109,7 +110,8 @@
   /* Show all content without animations */
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero-fade, .job-panel { animation: none !important; }
-  .job-panel[hidden] { display: block !important; }
+  .job-panel[hidden], .expand-panel[hidden] { display: block !important; }
+  .expand-panel figure { display: none; }
   .lang-bar { width: var(--level) !important; }
 
   section, .section-alt { background: none !important; padding-top: 1rem !important; padding-bottom: 1rem !important; }

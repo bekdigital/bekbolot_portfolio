@@ -64,12 +64,16 @@ export const ui = {
   thesis: { en: "Master's thesis", ru: 'Магистерская диссертация' },
   publication: { en: 'Publication', ru: 'Публикация' },
   readPublication: { en: 'Read the article', ru: 'Читать статью' },
-  learnMore: { en: 'Learn more', ru: 'Подробнее' },
+  learnMore: { en: 'Learn more', ru: 'Официальный сайт' },
   studied: { en: 'Studied', ru: 'Период обучения' },
   graduated: { en: 'Graduated', ru: 'Выпуск' },
   place: { en: 'Location', ru: 'Место' },
   academicEducation: { en: 'Academic education', ru: 'Академическое образование' },
-  coursesHeading: { en: 'Courses & certificates', ru: 'Курсы и сертификаты' },
+  coursesHeading: { en: 'Courses & training', ru: 'Курсы и подготовка' },
+  details: { en: 'Details', ru: 'Подробнее' },
+  hide: { en: 'Hide', ru: 'Скрыть' },
+  showAllCourses: { en: 'Show all courses', ru: 'Показать все курсы' },
+  showFewerCourses: { en: 'Show fewer', ru: 'Свернуть' },
   originalName: { en: 'Original name', ru: 'Оригинальное название' },
   comingSoon: { en: 'Details coming soon', ru: 'Подробности скоро' },
   visit: { en: 'Visit', ru: 'Открыть' },
@@ -435,6 +439,7 @@ export const experience = [
 //                 Wikimedia photos; use null for your own photos)
 //   about     – one short sentence about the school
 //   website   – official website ("Learn more" button)
+//   level     – short label shown on the compact card (e.g. "Master's degree")
 //   studied   – years of study; graduated – graduation year
 //   publication – optional { title, journal, url }
 // ---------------------------------------------------------------------------
@@ -457,6 +462,7 @@ export const education = [
       ru: 'Государственный университет в Бишкеке, основанный совместно Кыргызской Республикой и Турецкой Республикой в 1995 году.',
     },
     website: 'https://manas.edu.kg/en',
+    level: { en: "Master's degree", ru: 'Магистратура' },
     degree: { en: 'Master of Arts in Management', ru: 'Магистр менеджмента' },
     studied: '2021 – 2024',
     graduated: '2024',
@@ -487,6 +493,7 @@ export const education = [
       ru: 'Высшее военно-учебное заведение Вооружённых сил Германии, готовящее офицеров штабов из Германии и стран-партнёров.',
     },
     website: 'https://www.bundeswehr.de/en/organization/bundeswehr-command-and-staff-college',
+    level: { en: 'General Staff Officer', ru: 'Офицер Генштаба' },
     degree: {
       en: 'General Staff Officer (Military and Security Policy)',
       ru: 'Офицер Генерального штаба (военная политика и политика безопасности)',
@@ -512,6 +519,7 @@ export const education = [
       ru: 'Военная академия Сухопутных войск Турции, основанная в 1834 году. Готовит офицеров Сухопутных войск и входит в состав Национального университета обороны.',
     },
     website: 'https://kho.msu.edu.tr/',
+    level: { en: "Bachelor's degree", ru: 'Бакалавриат' },
     degree: {
       en: "Bachelor's Degree in Military Command and Management",
       ru: 'Бакалавр военного командования и управления',
@@ -522,8 +530,12 @@ export const education = [
 ]
 
 // ---------------------------------------------------------------------------
-// Education part 2: courses & certificates
+// Education part 2: courses & training.
+// The first COURSES_VISIBLE items are shown; the rest appear after "Show all".
+// Put the most important courses first.
 // ---------------------------------------------------------------------------
+export const COURSES_VISIBLE = 5
+
 export const training = [
   {
     name: { en: 'UN Military Observer Course', ru: 'Курс военных наблюдателей ООН' },

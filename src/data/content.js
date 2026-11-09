@@ -501,8 +501,8 @@ export const education = [
   {
     names: {
       original: 'Kara Harp Okulu',
-      en: 'Turkish Military Academy',
-      ru: 'Военная академия Сухопутных войск Турции',
+      en: 'Land Forces Academy',
+      ru: 'Сухопутное училище',
     },
     location: { en: 'Ankara, Türkiye', ru: 'Анкара, Турция' },
     image: '', // TODO: add your own photo, e.g. '/education/kho.jpg' in /public/education/

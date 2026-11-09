@@ -505,8 +505,8 @@ export const education = [
       ru: 'Сухопутное училище',
     },
     location: { en: 'Ankara, Türkiye', ru: 'Анкара, Турция' },
-    image: '', // TODO: add your own photo, e.g. '/education/kho.jpg' in /public/education/
-    imageCredit: null,
+    image: '/education/kara-harp-okulu.jpg',
+    imageCredit: { text: 'Photo: Kara Harp Okulu', url: 'https://kho.msu.edu.tr/' },
     about: {
       en: "Türkiye's army officer academy, founded in 1834. It trains officers for the Turkish Land Forces and is part of the National Defence University.",
       ru: 'Военная академия Сухопутных войск Турции, основанная в 1834 году. Готовит офицеров Сухопутных войск и входит в состав Национального университета обороны.',

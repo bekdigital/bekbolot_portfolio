@@ -174,22 +174,139 @@ function SchoolCard({ school, index }) {
 function CourseItem({ course }) {
   const { t } = useApp()
   return (
-    <li className="flex items-baseline justify-between gap-4 py-3">
-      <div>
+    <li className="py-3.5">
+      <div className="flex items-start justify-between gap-3">
         <p className="font-medium text-navy-950 dark:text-white">{t(course.name)}</p>
-        {t(course.provider) && <p className="text-sm text-navy-500 dark:text-navy-300">{t(course.provider)}</p>}
+        {course.un && (
+          <span className="shrink-0 rounded bg-accent/15 px-1.5 py-0.5 text-[11px] font-bold tracking-wide text-accent-dark dark:text-accent-light">
+            {t(ui.unTag)}
+          </span>
+        )}
       </div>
-      <p className="shrink-0 text-sm font-medium tabular-nums text-accent-dark dark:text-accent-light">{course.year}</p>
+      <p className="text-sm text-navy-500 dark:text-navy-300">
+        {t(course.provider)} · {t(course.place)}
+      </p>
+      <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+        <span className="tabular-nums text-navy-600 dark:text-navy-200">{course.dates}</span>
+        {course.duration && (
+          <span className="rounded-full border border-navy-200 px-2 py-0.5 text-navy-700 dark:border-navy-700 dark:text-navy-100">
+            {t(course.duration)}
+          </span>
+        )}
+        {course.obtained && (
+          <span className="rounded-full bg-navy-100 px-2 py-0.5 text-navy-700 dark:bg-navy-800 dark:text-navy-100">
+            {t(course.obtained)}
+          </span>
+        )}
+      </div>
+      {course.note && <p className="mt-1.5 text-sm text-navy-600 dark:text-navy-200">{t(course.note)}</p>}
     </li>
+  )
+}
+
+/** One group of courses with a "Show all" button. */
+function CourseList({ id, items }) {
+  const { t } = useApp()
+  const [showAll, setShowAll] = useState(false)
+  const visible = items.slice(0, COURSES_VISIBLE)
+  const more = items.slice(COURSES_VISIBLE)
+  return (
+    <>
+      <ul className="divide-y divide-navy-100 dark:divide-navy-800">
+        {visible.map((c, i) => (
+          <CourseItem key={i} course={c} />
+        ))}
+      </ul>
+      {more.length > 0 && (
+        <>
+          <ul id={`${id}-more`} hidden={!showAll} className="expand-panel divide-y divide-navy-100 border-t border-navy-100 dark:divide-navy-800 dark:border-navy-800">
+            {more.map((c, i) => (
+              <CourseItem key={i} course={c} />
+            ))}
+          </ul>
+          <div className="no-print border-t border-navy-100 py-2.5 dark:border-navy-800">
+            <button
+              type="button"
+              onClick={() => setShowAll((s) => !s)}
+              aria-expanded={showAll}
+              aria-controls={`${id}-more`}
+              className="inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-accent-dark hover:bg-accent/10 dark:text-accent-light"
+            >
+              {showAll ? t(ui.showFewerCourses) : `${t(ui.showAllCourses)} (${items.length})`}
+              <ChevronIcon width={16} height={16} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+        </>
+      )}
+    </>
+  )
+}
+
+const GROUPS = [
+  { key: 'course', label: ui.coursesTab, hint: ui.coursesTabHint },
+  { key: 'training', label: ui.trainingsTab, hint: ui.trainingsTabHint },
+]
+
+/** Courses & training: two tabs (keyboard: arrow keys switch tabs). */
+function CoursesTabs() {
+  const { t } = useApp()
+  const [active, setActive] = useState(0)
+
+  const onKeyDown = (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+    const next = (active + (e.key === 'ArrowRight' ? 1 : GROUPS.length - 1)) % GROUPS.length
+    setActive(next)
+    document.getElementById(`tab-${GROUPS[next].key}`)?.focus()
+  }
+
+  return (
+    <div className="card overflow-hidden">
+      <div role="tablist" aria-label={t(ui.coursesHeading)} className="no-print grid grid-cols-2 border-b border-navy-100 dark:border-navy-800" onKeyDown={onKeyDown}>
+        {GROUPS.map((g, i) => {
+          const count = training.filter((c) => c.type === g.key).length
+          const selected = i === active
+          return (
+            <button
+              key={g.key}
+              id={`tab-${g.key}`}
+              type="button"
+              role="tab"
+              aria-selected={selected}
+              aria-controls={`tabpanel-${g.key}`}
+              tabIndex={selected ? 0 : -1}
+              onClick={() => setActive(i)}
+              className={`border-b-2 px-3 py-3 text-left text-sm font-semibold leading-snug transition-colors sm:px-5 ${
+                selected
+                  ? 'border-accent text-navy-950 dark:text-white'
+                  : 'border-transparent text-navy-500 hover:text-navy-900 dark:text-navy-300 dark:hover:text-white'
+              }`}
+            >
+              {t(g.label)} <span className="font-normal text-navy-400">({count})</span>
+            </button>
+          )
+        })}
+      </div>
+
+      {GROUPS.map((g, i) => (
+        <div
+          key={g.key}
+          id={`tabpanel-${g.key}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${g.key}`}
+          hidden={i !== active}
+          className="tab-panel px-4 sm:px-5"
+        >
+          <h4 className="print-only pt-3 font-semibold">{t(g.label)}</h4>
+          <p className="pt-3 text-xs text-navy-500 dark:text-navy-300">{t(g.hint)}</p>
+          <CourseList id={g.key} items={training.filter((c) => c.type === g.key)} />
+        </div>
+      ))}
+    </div>
   )
 }
 
 export default function Education() {
   const { t } = useApp()
-  const [showAll, setShowAll] = useState(false)
-  const visible = training.slice(0, COURSES_VISIBLE)
-  const more = training.slice(COURSES_VISIBLE)
-
   return (
     <Section id="education" eyebrow={sections.education.eyebrow} title={sections.education.title} className="section-alt">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
@@ -206,34 +323,7 @@ export default function Education() {
         {/* Right: courses & training */}
         <Reveal delay={100}>
           <ColumnHeading id="courses">{t(ui.coursesHeading)}</ColumnHeading>
-          <div className="card px-4 py-2 sm:px-5">
-            <ul className="divide-y divide-navy-100 dark:divide-navy-800">
-              {visible.map((c, i) => (
-                <CourseItem key={i} course={c} />
-              ))}
-            </ul>
-            {more.length > 0 && (
-              <>
-                <ul id="more-courses" hidden={!showAll} className="expand-panel divide-y divide-navy-100 border-t border-navy-100 dark:divide-navy-800 dark:border-navy-800">
-                  {more.map((c, i) => (
-                    <CourseItem key={i} course={c} />
-                  ))}
-                </ul>
-                <div className="no-print border-t border-navy-100 py-2.5 dark:border-navy-800">
-                  <button
-                    type="button"
-                    onClick={() => setShowAll((s) => !s)}
-                    aria-expanded={showAll}
-                    aria-controls="more-courses"
-                    className="inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-accent-dark hover:bg-accent/10 dark:text-accent-light"
-                  >
-                    {showAll ? t(ui.showFewerCourses) : `${t(ui.showAllCourses)} (${training.length})`}
-                    <ChevronIcon width={16} height={16} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
+          <CoursesTabs />
         </Reveal>
       </div>
     </Section>

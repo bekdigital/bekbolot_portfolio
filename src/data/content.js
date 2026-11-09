@@ -72,7 +72,12 @@ export const ui = {
   coursesHeading: { en: 'Courses & training', ru: 'Курсы и подготовка' },
   details: { en: 'Details', ru: 'Подробнее' },
   hide: { en: 'Hide', ru: 'Скрыть' },
-  showAllCourses: { en: 'Show all courses', ru: 'Показать все курсы' },
+  showAllCourses: { en: 'Show all', ru: 'Показать все' },
+  coursesTab: { en: 'Professional courses', ru: 'Профессиональные курсы' },
+  trainingsTab: { en: 'Short trainings & certificates', ru: 'Краткосрочные тренинги и сертификаты' },
+  coursesTabHint: { en: '1 month or longer', ru: '1 месяц и более' },
+  trainingsTabHint: { en: 'Seminars, short trainings and online courses', ru: 'Семинары, краткие тренинги и онлайн-курсы' },
+  unTag: { en: 'UN', ru: 'ООН' },
   showFewerCourses: { en: 'Show fewer', ru: 'Свернуть' },
   originalName: { en: 'Original name', ru: 'Оригинальное название' },
   comingSoon: { en: 'Details coming soon', ru: 'Подробности скоро' },
@@ -530,77 +535,216 @@ export const education = [
 ]
 
 // ---------------------------------------------------------------------------
-// Education part 2: courses & training.
-// The first COURSES_VISIBLE items are shown; the rest appear after "Show all".
-// Put the most important courses first.
+// Education part 2: courses & training
+//
+// Two groups, shown as tabs on the website:
+//   type: 'course'   – professional courses (full-time, 1 month or longer)
+//   type: 'training' – short trainings, seminars and online certificates
+// Each item:
+//   name, provider, place – text in { en, ru }
+//   dates     – as you want them shown, e.g. '11.06.2018 – 29.06.2018' or '2014'
+//   duration  – e.g. { en: '2 weeks', ru: '2 недели' } (or null)
+//   obtained  – e.g. { en: 'Diploma', ru: 'Диплом' } (or null)
+//   un        – true shows a small "UN" tag
+//   note      – optional short description (or leave it out)
+// The first COURSES_VISIBLE items of each group are shown; the rest appear
+// after "Show all". Put the most important ones first.
 // ---------------------------------------------------------------------------
 export const COURSES_VISIBLE = 5
 
+const DIPLOMA = { en: 'Diploma', ru: 'Диплом' }
+const CERTIFICATE = { en: 'Certificate', ru: 'Сертификат' }
+const CERTIFICATES = { en: 'Certificates', ru: 'Сертификаты' }
+const ATTENDANCE = { en: 'Certificate of attendance', ru: 'Свидетельство о прохождении' }
+
 export const training = [
+  // ----- Professional courses (1 month or longer) -----
   {
-    name: { en: 'UN Military Observer Course', ru: 'Курс военных наблюдателей ООН' },
-    provider: {
-      en: 'Incl. German Armed Forces Command and Staff College (2018)',
-      ru: 'В т.ч. Командно-штабная академия Бундесвера (2018)',
-    },
-    year: '2010, 2018',
-  },
-  {
-    name: { en: 'Protection of Children in Conflict Areas', ru: 'Защита детей в зонах конфликтов' },
-    provider: { en: 'UNAMID, Darfur', ru: 'ЮНАМИД, Дарфур' },
-    year: '2014',
-  },
-  {
-    name: {
-      en: 'Safe and Secure Approaches in Field Environments (SSAFE)',
-      ru: 'Безопасные подходы в полевых условиях (SSAFE)',
-    },
-    provider: { en: 'UNAMID, Darfur', ru: 'ЮНАМИД, Дарфур' },
-    year: '2014',
-  },
-  {
-    name: { en: 'Law of Armed Conflict', ru: 'Право вооружённых конфликтов' },
-    provider: {
-      en: 'Partnership for Peace Training Centre, Türkiye',
-      ru: 'Учебный центр «Партнёрство ради мира», Турция',
-    },
-    year: '2010',
-  },
-  {
+    type: 'course',
     name: { en: 'Staff Officer Course', ru: 'Курс штабных офицеров' },
-    provider: { en: 'French Staff School, France', ru: 'Штабная школа, Франция' },
-    year: '2008',
+    provider: { en: 'French Staff School', ru: 'Штабная школа' },
+    place: { en: 'Compiègne, France', ru: 'Компьень, Франция' },
+    dates: '20.08.2008 – 19.12.2008',
+    duration: { en: '4 months', ru: '4 месяца' },
+    obtained: DIPLOMA,
   },
   {
+    type: 'course',
     name: { en: 'Company Commander Course', ru: 'Курс командиров рот' },
-    provider: { en: 'French Infantry School, France', ru: 'Пехотная школа, Франция' },
-    year: '2006 – 2008',
+    provider: { en: 'French Infantry School', ru: 'Пехотная школа' },
+    place: { en: 'Montpellier, France', ru: 'Монпелье, Франция' },
+    dates: '04.09.2006 – 19.01.2007',
+    duration: { en: '4.5 months', ru: '4,5 месяца' },
+    obtained: { en: 'Certificate of attendance (Attestation de stage)', ru: 'Свидетельство о прохождении (Attestation de stage)' },
   },
   {
+    type: 'course',
     name: { en: 'Mountaineering, Ski and Mountain Rescue', ru: 'Альпинизм, лыжная подготовка и горное спасение' },
-    provider: { en: 'French High Mountain School, France', ru: 'Высокогорная военная школа, Франция' },
-    year: '2005 – 2007',
+    provider: { en: 'French High Mountain School', ru: 'Высокогорная военная школа' },
+    place: { en: 'France', ru: 'Франция' },
+    dates: '2005 – 2007',
+    duration: { en: '6 stages × 1 month', ru: '6 этапов по 1 месяцу' },
+    obtained: null,
+    note: {
+      en: 'Six one-month training stages, each followed by five months of practical application in my military unit.',
+      ru: 'Шесть этапов подготовки по одному месяцу, после каждого — пять месяцев практического применения знаний в воинской части.',
+    },
   },
   {
+    type: 'course',
     name: { en: 'Basic Commando and Internal Security Course', ru: 'Базовый курс коммандос и внутренней безопасности' },
-    provider: { en: 'Turkish Commando School, Eğirdir', ru: 'Школа коммандос, Эгирдир (Турция)' },
-    year: '2002',
+    provider: { en: 'Turkish Commando School', ru: 'Школа коммандос' },
+    place: { en: 'Eğirdir, Türkiye', ru: 'Эгирдир, Турция' },
+    dates: '15.09.2002 – 15.11.2002',
+    duration: { en: '2 months', ru: '2 месяца' },
+    obtained: CERTIFICATE,
   },
   {
-    name: {
-      en: 'Inclusive Leadership: The Power of Workplace Diversity',
-      ru: 'Инклюзивное лидерство: сила разнообразия на рабочем месте',
-    },
-    provider: { en: 'University of Colorado (Coursera)', ru: 'Университет Колорадо (Coursera)' },
-    year: '2021',
-  },
-  {
-    name: {
-      en: 'Frontend Developer (HTML, CSS, JavaScript, React)',
-      ru: 'Frontend-разработчик (HTML, CSS, JavaScript, React)',
-    },
+    type: 'course',
+    name: { en: 'Frontend Developer (HTML, CSS, JavaScript, React)', ru: 'Frontend-разработчик (HTML, CSS, JavaScript, React)' },
     provider: { en: 'Jyldyz Academy', ru: 'Jyldyz Academy' },
-    year: '2021 – 2022',
+    place: { en: 'Bishkek, Kyrgyzstan', ru: 'Бишкек, Кыргызстан' },
+    dates: '2021 – 2022',
+    duration: null,
+    obtained: null,
+  },
+  {
+    type: 'course',
+    name: { en: 'German Language Course', ru: 'Курс немецкого языка' },
+    provider: { en: 'Federal Office of Languages (Bundessprachenamt)', ru: 'Федеральное ведомство по языкам (Bundessprachenamt)' },
+    place: { en: 'Hürth, Germany', ru: 'Хюрт, Германия' },
+    dates: '11.2016 – 17.07.2017',
+    duration: { en: '8 months', ru: '8 месяцев' },
+    obtained: CERTIFICATE,
+  },
+  {
+    type: 'course',
+    name: { en: 'French Language Course', ru: 'Курс французского языка' },
+    provider: { en: 'Gendarmerie School', ru: 'Школа жандармерии' },
+    place: { en: 'Rochefort, France', ru: 'Рошфор, Франция' },
+    dates: '30.06.2008 – 18.08.2008',
+    duration: { en: '7 weeks', ru: '7 недель' },
+    obtained: ATTENDANCE,
+  },
+  {
+    type: 'course',
+    name: { en: 'Infantry Officer Basic Course', ru: 'Базовый курс пехотных офицеров' },
+    provider: { en: 'Infantry School Command', ru: 'Командование пехотной школы' },
+    place: { en: 'Tuzla, Istanbul, Türkiye', ru: 'Тузла, Стамбул, Турция' },
+    dates: '18.11.2002 – 02.05.2003',
+    duration: { en: '5.5 months', ru: '5,5 месяца' },
+    obtained: DIPLOMA,
+  },
+
+  // ----- Short trainings & certificates -----
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'UN Peacekeeping Module', ru: 'Модуль миротворческой подготовки ООН' },
+    provider: { en: 'Bundeswehr Command and Staff College', ru: 'Командно-штабная академия Бундесвера' },
+    place: { en: 'Hamburg, Germany', ru: 'Гамбург, Германия' },
+    dates: '11.06.2018 – 29.06.2018',
+    duration: { en: '3 weeks', ru: '3 недели' },
+    obtained: CERTIFICATE,
+    note: {
+      en: 'Taught in German. Covered all topics of the UN Staff Officer Course in line with the UN Standardized Training Modules for pre-deployment training, including a four-day map exercise.',
+      ru: 'Проводился на немецком языке. Охватывал все темы курса штабных офицеров ООН в соответствии со стандартизированными учебными модулями ООН для преддеплойментной подготовки, включая четырёхдневное учение на картах.',
+    },
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'Protection of Children in Conflict Areas', ru: 'Защита детей в зонах конфликтов' },
+    provider: { en: 'UNAMID', ru: 'ЮНАМИД' },
+    place: { en: 'Darfur, Sudan', ru: 'Дарфур, Судан' },
+    dates: '2014',
+    duration: null,
+    obtained: null,
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'Safe and Secure Approaches in Field Environments (SSAFE)', ru: 'Безопасные подходы в полевых условиях (SSAFE)' },
+    provider: { en: 'UNAMID', ru: 'ЮНАМИД' },
+    place: { en: 'Darfur, Sudan', ru: 'Дарфур, Судан' },
+    dates: '11.08.2014 – 12.08.2014',
+    duration: { en: '2 days', ru: '2 дня' },
+    obtained: CERTIFICATE,
+  },
+  {
+    type: 'training',
+    name: { en: 'Law of Armed Conflict', ru: 'Право вооружённых конфликтов' },
+    provider: { en: 'Partnership for Peace Training Centre', ru: 'Учебный центр «Партнёрство ради мира»' },
+    place: { en: 'Ankara, Türkiye', ru: 'Анкара, Турция' },
+    dates: '01.11.2010 – 12.11.2010',
+    duration: { en: '2 weeks', ru: '2 недели' },
+    obtained: CERTIFICATE,
+  },
+  {
+    type: 'training',
+    name: { en: 'Inclusive Leadership: The Power of Workplace Diversity', ru: 'Инклюзивное лидерство: сила разнообразия на рабочем месте' },
+    provider: { en: 'University of Colorado (Coursera)', ru: 'Университет Колорадо (Coursera)' },
+    place: { en: 'Online', ru: 'Онлайн' },
+    dates: '2021',
+    duration: null,
+    obtained: null,
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'Basic Protection of Civilians', ru: 'Основы защиты гражданского населения' },
+    provider: { en: 'UNAMID', ru: 'ЮНАМИД' },
+    place: { en: 'El Fasher, Sudan', ru: 'Эль-Фашир, Судан' },
+    dates: '12.06.2013 – 13.06.2013',
+    duration: { en: '2 days', ru: '2 дня' },
+    obtained: CERTIFICATE,
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'Integrated Induction Training', ru: 'Комплексная вводная подготовка' },
+    provider: { en: 'UNAMID', ru: 'ЮНАМИД' },
+    place: { en: 'El Fasher, Sudan', ru: 'Эль-Фашир, Судан' },
+    dates: '27.01.2013 – 30.01.2013',
+    duration: { en: '4 days', ru: '4 дня' },
+    obtained: CERTIFICATE,
+  },
+  {
+    type: 'training',
+    name: {
+      en: 'Executive Seminar on Legal Aspects of Developing a Professional Military',
+      ru: 'Семинар для руководящего состава по правовым аспектам развития профессиональной армии',
+    },
+    provider: { en: 'US Defense Institute', ru: 'Институт обороны США' },
+    place: { en: 'Bishkek, Kyrgyzstan', ru: 'Бишкек, Кыргызстан' },
+    dates: '16.06.2009 – 18.06.2009',
+    duration: { en: '3 days', ru: '3 дня' },
+    obtained: null,
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'UNDP Mandatory Online Courses', ru: 'Обязательные онлайн-курсы ПРООН' },
+    provider: { en: 'UNDP', ru: 'ПРООН' },
+    place: { en: 'Online', ru: 'Онлайн' },
+    dates: '03.2024 – 04.2024',
+    duration: null,
+    obtained: CERTIFICATES,
+    note: { en: 'Core and mandatory courses for UNDP personnel.', ru: 'Основные и обязательные курсы для сотрудников ПРООН.' },
+  },
+  {
+    type: 'training',
+    un: true,
+    name: { en: 'UNDSS Online Security Courses', ru: 'Онлайн-курсы UNDSS по безопасности' },
+    provider: { en: 'UN Department of Safety and Security (UNDSS)', ru: 'Департамент ООН по вопросам охраны и безопасности (UNDSS)' },
+    place: { en: 'Online', ru: 'Онлайн' },
+    dates: '06.2024 – 09.2024',
+    duration: null,
+    obtained: CERTIFICATES,
+    note: {
+      en: 'Courses related to the UN Security Management System (UNSMS).',
+      ru: 'Курсы по системе управления безопасностью ООН (UNSMS).',
+    },
   },
 ]
 

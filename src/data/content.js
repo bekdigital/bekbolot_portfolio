@@ -584,10 +584,10 @@ export const training = [
     place: { en: 'France', ru: 'Франция' },
     dates: '2005 – 2007',
     duration: { en: '6 stages × 1 month', ru: '6 этапов по 1 месяцу' },
-    obtained: null,
+    obtained: { en: 'Diploma and certificate', ru: 'Диплом и сертификат' },
     note: {
-      en: 'Six one-month training stages, each followed by five months of practical application in my military unit.',
-      ru: 'Шесть этапов подготовки по одному месяцу, после каждого — пять месяцев практического применения знаний в воинской части.',
+      en: 'Six one-month training stages, each followed by five months of practical application in my military unit. Certified to lead military or civilian groups in high-mountain areas.',
+      ru: 'Шесть этапов подготовки по одному месяцу, после каждого — пять месяцев практического применения знаний в воинской части. Сертификат на право руководства военными и гражданскими группами в высокогорных районах.',
     },
   },
   {
@@ -603,10 +603,10 @@ export const training = [
     type: 'course',
     name: { en: 'Frontend Developer (HTML, CSS, JavaScript, React)', ru: 'Frontend-разработчик (HTML, CSS, JavaScript, React)' },
     provider: { en: 'Jyldyz Academy', ru: 'Jyldyz Academy' },
-    place: { en: 'Bishkek, Kyrgyzstan', ru: 'Бишкек, Кыргызстан' },
+    place: { en: 'Online', ru: 'Онлайн' },
     dates: '2021 – 2022',
     duration: null,
-    obtained: null,
+    obtained: CERTIFICATE,
   },
   {
     type: 'course',
@@ -657,9 +657,9 @@ export const training = [
     name: { en: 'Protection of Children in Conflict Areas', ru: 'Защита детей в зонах конфликтов' },
     provider: { en: 'UNAMID', ru: 'ЮНАМИД' },
     place: { en: 'Darfur, Sudan', ru: 'Дарфур, Судан' },
-    dates: '2014',
-    duration: null,
-    obtained: null,
+    dates: '07.2014',
+    duration: { en: '3 days', ru: '3 дня' },
+    obtained: CERTIFICATE,
   },
   {
     type: 'training',
@@ -687,7 +687,7 @@ export const training = [
     place: { en: 'Online', ru: 'Онлайн' },
     dates: '2021',
     duration: null,
-    obtained: null,
+    obtained: CERTIFICATE,
   },
   {
     type: 'training',

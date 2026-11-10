@@ -121,10 +121,10 @@ export default function StatVisual({ visual, image, imageAlt = '' }) {
     case 'flags':
       return (
         <div className={`${band} gap-1.5 bg-navy-100 px-2 dark:bg-navy-800 sm:gap-3`}>
-          <FlagKyrgyzstan className="h-6 w-auto sm:h-9" />
-          <FlagTurkiye className="h-6 w-auto sm:h-9" />
-          <FlagGermany className="h-6 w-auto sm:h-9" />
-          <FlagFrance className="h-6 w-auto sm:h-9" />
+          <FlagKyrgyzstan className="h-8 w-auto sm:h-9" />
+          <FlagTurkiye className="h-8 w-auto sm:h-9" />
+          <FlagGermany className="h-8 w-auto sm:h-9" />
+          <FlagFrance className="h-8 w-auto sm:h-9" />
         </div>
       )
     default:

@@ -215,6 +215,12 @@ export const stats = [
   {
     value: '2',
     visual: 'peacekeeping',
+    wide: true,
+    portrait: '/numbers/unamid-portrait.jpg',
+    portraitAlt: {
+      en: 'Bekbolot Tolomushov in a UN blue beret at a UNAMID team site in Darfur',
+      ru: 'Бекболот Толомушов в голубом берете ООН на опорном пункте ЮНАМИД в Дарфуре',
+    },
     label: {
       en: 'UN peacekeeping missions: Syria (UNSMIS) and Darfur (UNAMID)',
       ru: 'Миротворческие миссии ООН: Сирия (МООННС) и Дарфур (ЮНАМИД)',
@@ -223,6 +229,7 @@ export const stats = [
   {
     value: '4',
     visual: 'flags',
+    wide: true,
     label: {
       en: 'Countries of education: Kyrgyzstan, Türkiye, Germany, France',
       ru: 'Страны обучения: Кыргызстан, Турция, Германия, Франция',

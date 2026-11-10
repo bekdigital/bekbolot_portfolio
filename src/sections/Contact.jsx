@@ -7,7 +7,10 @@ import { CheckIcon, CopyIcon, DownloadIcon, LinkedInIcon, MailIcon, PinIcon } fr
 
 export default function Contact() {
   const { t } = useApp()
-  const [form, setForm] = useState({ name: '', organisation: '', subject: '', message: '' })
+  const emptyForm = { name: '', email: '', organisation: '', subject: '', message: '' }
+  const [form, setForm] = useState(emptyForm)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const useWeb3Forms = Boolean(profile.web3formsKey)
 
   const [copied, setCopied] = useState(false)
 
@@ -30,12 +33,43 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  // Builds a mailto: link and opens the visitor's email app.
-  const handleSubmit = (e) => {
+  // Sends the message. With a web3forms.com key it is delivered straight to my
+  // inbox; without one, the visitor's email app opens with the message ready.
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const body = `${form.message}\n\n— ${form.name}${form.organisation ? `, ${form.organisation}` : ''}`
-    const href = `mailto:${profile.email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`
-    window.location.href = href
+    const signature = `${form.name}${form.organisation ? `, ${form.organisation}` : ''}`
+
+    if (!useWeb3Forms) {
+      const body = `${form.message}\n\n— ${signature}\n${form.email}`
+      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`
+      return
+    }
+
+    // A hidden "botcheck" field is filled in only by spam bots
+    if (e.target.botcheck.checked) return
+
+    setStatus('sending')
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: profile.web3formsKey,
+          subject: `Portfolio: ${form.subject}`,
+          from_name: signature,
+          name: form.name,
+          email: form.email,
+          organisation: form.organisation || '—',
+          message: form.message,
+        }),
+      })
+      const result = await response.json()
+      if (!result.success) throw new Error(result.message)
+      setStatus('sent')
+      setForm(emptyForm)
+    } catch {
+      setStatus('error')
+    }
   }
 
   const inputClass =
@@ -107,33 +141,65 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={100} className="no-print">
-          <form onSubmit={handleSubmit} className="card space-y-4 p-6 sm:p-8">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label htmlFor="cf-name" className={labelClass}>{t(contactForm.name)}</label>
-                <input id="cf-name" name="name" required autoComplete="name" value={form.name} onChange={update} className={inputClass} />
-              </div>
-              <div>
-                <label htmlFor="cf-org" className={labelClass}>{t(contactForm.organisation)}</label>
-                <input id="cf-org" name="organisation" autoComplete="organization" value={form.organisation} onChange={update} className={inputClass} />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="cf-subject" className={labelClass}>{t(contactForm.subject)}</label>
-              <input id="cf-subject" name="subject" required value={form.subject} onChange={update} className={inputClass} />
-            </div>
-            <div>
-              <label htmlFor="cf-message" className={labelClass}>{t(contactForm.message)}</label>
-              <textarea id="cf-message" name="message" required rows={5} value={form.message} onChange={update} className={`${inputClass} resize-y`} />
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-navy-500 dark:text-navy-300">{t(contactForm.note)}</p>
-              <button type="submit" className="btn btn-primary shrink-0">
-                <MailIcon width={18} height={18} />
-                {t(contactForm.send)}
+          {status === 'sent' ? (
+            <div role="status" className="card flex flex-col items-start gap-4 p-6 sm:p-8">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300">
+                <CheckIcon width={24} height={24} />
+              </span>
+              <p className="text-lg font-medium text-navy-950 dark:text-white">{t(contactForm.success)}</p>
+              <button type="button" onClick={() => setStatus('idle')} className="btn btn-secondary py-2.5">
+                {t(contactForm.sendAnother)}
               </button>
             </div>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="card space-y-4 p-6 sm:p-8">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="cf-name" className={labelClass}>{t(contactForm.name)}</label>
+                  <input id="cf-name" name="name" required autoComplete="name" value={form.name} onChange={update} className={inputClass} />
+                </div>
+                <div>
+                  <label htmlFor="cf-email" className={labelClass}>{t(contactForm.email)}</label>
+                  <input id="cf-email" name="email" type="email" required autoComplete="email" value={form.email} onChange={update} className={inputClass} />
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="cf-org" className={labelClass}>{t(contactForm.organisation)}</label>
+                  <input id="cf-org" name="organisation" autoComplete="organization" value={form.organisation} onChange={update} className={inputClass} />
+                </div>
+                <div>
+                  <label htmlFor="cf-subject" className={labelClass}>{t(contactForm.subject)}</label>
+                  <input id="cf-subject" name="subject" required value={form.subject} onChange={update} className={inputClass} />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="cf-message" className={labelClass}>{t(contactForm.message)}</label>
+                <textarea id="cf-message" name="message" required rows={5} value={form.message} onChange={update} className={`${inputClass} resize-y`} />
+              </div>
+              {/* Spam trap: hidden from people, bots tick it */}
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+              {status === 'error' && (
+                <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-900/30 dark:text-red-200">
+                  {t(contactForm.error)}{' '}
+                  <a href={`mailto:${profile.email}`} className="font-medium underline">
+                    {profile.email}
+                  </a>
+                </p>
+              )}
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-navy-500 dark:text-navy-300">
+                  {t(useWeb3Forms ? contactForm.note : contactForm.noteMailto)}
+                </p>
+                <button type="submit" disabled={status === 'sending'} className="btn btn-primary shrink-0 disabled:opacity-60">
+                  <MailIcon width={18} height={18} />
+                  {t(status === 'sending' ? contactForm.sending : contactForm.send)}
+                </button>
+              </div>
+            </form>
+          )}
         </Reveal>
       </div>
     </Section>

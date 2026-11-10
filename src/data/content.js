@@ -27,6 +27,9 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/bek-tolo1/',
   // Files in the /public folder
   cvFile: '/Bekbolot_Tolomushov_CV.pdf',
+  // Contact form delivery via web3forms.com. Paste your free access key here.
+  // While it is empty, the form opens the visitor's email app instead.
+  web3formsKey: '',
   photo: '/profile.jpg',
   photoAlt: {
     en: 'Portrait of Bekbolot Tolomushov',
@@ -1002,14 +1005,29 @@ export const skills = [
 // ---------------------------------------------------------------------------
 export const contactForm = {
   name: { en: 'Your name', ru: 'Ваше имя' },
+  email: { en: 'Your email', ru: 'Ваш email' },
   organisation: { en: 'Organisation (optional)', ru: 'Организация (необязательно)' },
   subject: { en: 'Subject', ru: 'Тема' },
   message: { en: 'Message', ru: 'Сообщение' },
-  send: { en: 'Send message', ru: 'Написать письмо' },
+  send: { en: 'Send message', ru: 'Отправить сообщение' },
+  sending: { en: 'Sending…', ru: 'Отправка…' },
   note: {
+    en: 'Your message goes directly to my inbox. I usually reply within two working days.',
+    ru: 'Сообщение придёт прямо ко мне на почту. Обычно я отвечаю в течение двух рабочих дней.',
+  },
+  noteMailto: {
     en: 'This form opens your email app with the message ready to send.',
     ru: 'Форма откроет вашу почтовую программу с готовым письмом.',
   },
+  success: {
+    en: 'Thank you! Your message has been sent. I will reply as soon as possible.',
+    ru: 'Спасибо! Ваше сообщение отправлено. Я отвечу как можно скорее.',
+  },
+  error: {
+    en: 'Sorry, the message could not be sent. Please try again or email me directly at',
+    ru: 'К сожалению, сообщение не отправлено. Попробуйте ещё раз или напишите мне напрямую:',
+  },
+  sendAnother: { en: 'Send another message', ru: 'Отправить ещё одно сообщение' },
   emailLabel: { en: 'Email', ru: 'Эл. почта' },
   linkedinLabel: { en: 'LinkedIn', ru: 'LinkedIn' },
   locationLabel: { en: 'Location', ru: 'Местоположение' },

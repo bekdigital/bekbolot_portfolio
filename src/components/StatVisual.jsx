@@ -63,8 +63,16 @@ export default function StatVisual({ visual, image, imageAlt = '' }) {
   switch (visual) {
     case 'army':
       return (
-        <div className={`${band} bg-gradient-to-br from-[#3d4a2c] to-[#5b6b3a]`}>
-          <FlagKyrgyzstan className="h-14 w-auto" title="Flag of Kyrgyzstan" />
+        <div className={`${band} gap-2 bg-gradient-to-br from-[#3d4a2c] to-[#5b6b3a] sm:gap-4`}>
+          <FlagKyrgyzstan className="h-9 w-auto sm:h-14" title="Flag of Kyrgyzstan" />
+          {/* Flag of the Armed Forces: "Долг · Честь · Отечество" (Duty · Honour · Fatherland) */}
+          <img
+            src="/numbers/armed-forces-flag.png"
+            alt="Flag of the Armed Forces of the Kyrgyz Republic"
+            width="349"
+            height="216"
+            className="h-9 w-auto rounded-sm shadow-sm ring-1 ring-black/10 sm:h-14"
+          />
         </div>
       )
     case 'un':

@@ -1,15 +1,34 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
-import { contactForm, profile, sections } from '../data/content'
+import { contactForm, profile, sections, ui } from '../data/content'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
-import { LinkedInIcon, MailIcon, PinIcon } from '../components/Icons'
+import { CheckIcon, CopyIcon, DownloadIcon, LinkedInIcon, MailIcon, PinIcon } from '../components/Icons'
 
 export default function Contact() {
   const { t } = useApp()
   const [form, setForm] = useState({ name: '', organisation: '', subject: '', message: '' })
 
+  const [copied, setCopied] = useState(false)
+
   const update = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  // Copies the email address and shows "Copied" for two seconds.
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+    } catch {
+      // Older browsers: select the text in a temporary field and copy it
+      const field = document.createElement('textarea')
+      field.value = profile.email
+      document.body.appendChild(field)
+      field.select()
+      document.execCommand('copy')
+      field.remove()
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   // Builds a mailto: link and opens the visitor's email app.
   const handleSubmit = (e) => {
@@ -65,6 +84,26 @@ export default function Contact() {
               </div>
             </li>
           </ul>
+
+          {/* Quick actions */}
+          <div className="no-print mt-8 flex flex-wrap gap-3">
+            <button type="button" onClick={copyEmail} className="btn btn-secondary py-2.5">
+              {copied ? <CheckIcon width={18} height={18} /> : <CopyIcon width={18} height={18} />}
+              {t(copied ? ui.copied : ui.copyEmail)}
+            </button>
+            <a href={profile.cvFile} download className="btn btn-secondary py-2.5">
+              <DownloadIcon width={18} height={18} />
+              {t(ui.downloadCv)}
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-secondary py-2.5">
+              <LinkedInIcon width={18} height={18} />
+              {t(ui.linkedinProfile)}
+            </a>
+          </div>
+          {/* Announces the "Copied" message to screen readers */}
+          <p className="sr-only" aria-live="polite">
+            {copied ? t(ui.copied) : ''}
+          </p>
         </Reveal>
 
         <Reveal delay={100} className="no-print">

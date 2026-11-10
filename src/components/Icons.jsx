@@ -76,3 +76,14 @@ export const ArrowUpIcon = (p) => (
     <path d="M12 19V5M5 12l7-7 7 7" />
   </svg>
 )
+export const CopyIcon = (p) => (
+  <svg {...base} {...p}>
+    <rect x="9" y="9" width="11" height="11" rx="2" />
+    <path d="M5 15V5a1 1 0 0 1 1-1h10" />
+  </svg>
+)
+export const CheckIcon = (p) => (
+  <svg {...base} {...p}>
+    <path d="M5 12l5 5 9-10" />
+  </svg>
+)

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
-import { experience, gallery, sections, ui } from '../data/content'
+import { JOBS_VISIBLE, experience, gallery, sections, ui } from '../data/content'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import { ChevronIcon } from '../components/Icons'
@@ -30,7 +30,7 @@ function ColumnHeading({ id, title, hint, years }) {
 }
 
 /** Compact job card on a timeline. "Details" opens responsibilities and achievements. */
-function JobCard({ job, id }) {
+function JobCard({ job, id, hidden = false }) {
   const { t, lang } = useApp()
   const [open, setOpen] = useState(false)
   const panelId = `job-panel-${id}`
@@ -41,7 +41,7 @@ function JobCard({ job, id }) {
     : `${formatDate(job.start, lang)} – ${isCurrent ? t(ui.present) : formatDate(job.end, lang)}`
 
   return (
-    <li className="relative pl-7">
+    <li hidden={hidden} className="expand-panel relative pl-7">
       {/* timeline dot */}
       <span
         aria-hidden="true"
@@ -52,7 +52,8 @@ function JobCard({ job, id }) {
         }`}
       />
       <article className="card">
-        <div className="p-4 sm:p-5">
+        {/* Same height for all cards on desktop so the two columns line up */}
+        <div className="p-4 sm:p-5 lg:min-h-[10.5rem]">
           <p className="text-sm font-medium tabular-nums text-accent-dark dark:text-accent-light">
             {dates}
           </p>
@@ -120,6 +121,38 @@ function yearSpan(jobs, presentLabel) {
   return `${Math.min(...starts)} – ${hasCurrent ? presentLabel : Math.max(...ends)}`
 }
 
+/** One column of jobs: the first JOBS_VISIBLE are shown, the rest open with "Show all". */
+function JobColumn({ group, jobs, delay }) {
+  const { t } = useApp()
+  const [showAll, setShowAll] = useState(false)
+  const extra = jobs.length - JOBS_VISIBLE
+  const listId = `exp-list-${group.key}`
+  return (
+    <Reveal delay={delay}>
+      <ColumnHeading id={`exp-${group.key}`} title={group.title} hint={group.hint} years={yearSpan(jobs, t(ui.present))} />
+      <ol id={listId} className="relative ml-2 space-y-4 border-l-2 border-navy-100 dark:border-navy-800">
+        {jobs.map((job, i) => (
+          <JobCard key={i} job={job} id={`${group.key}-${i}`} hidden={!showAll && i >= JOBS_VISIBLE} />
+        ))}
+      </ol>
+      {extra > 0 && (
+        <div className="no-print ml-2 mt-3 pl-7">
+          <button
+            type="button"
+            onClick={() => setShowAll((s) => !s)}
+            aria-expanded={showAll}
+            aria-controls={listId}
+            className="inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-accent-dark hover:bg-accent/10 dark:text-accent-light"
+          >
+            {showAll ? t(ui.showFewerCourses) : `${t(ui.showAllCourses)} (${jobs.length})`}
+            <ChevronIcon width={16} height={16} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
+      )}
+    </Reveal>
+  )
+}
+
 const GROUPS = [
   { key: 'military', title: ui.militaryCareer, hint: ui.militaryCareerHint },
   { key: 'international', title: ui.internationalCareer, hint: ui.internationalCareerHint },
@@ -137,16 +170,7 @@ export default function Experience() {
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         {GROUPS.map((g, gi) => {
           const jobs = experience.filter((j) => j.group === g.key)
-          return (
-            <Reveal key={g.key} delay={gi * 100}>
-              <ColumnHeading id={`exp-${g.key}`} title={g.title} hint={g.hint} years={yearSpan(jobs, t(ui.present))} />
-              <ol className="relative ml-2 space-y-4 border-l-2 border-navy-100 dark:border-navy-800">
-                {jobs.map((job, i) => (
-                  <JobCard key={i} job={job} id={`${g.key}-${i}`} />
-                ))}
-              </ol>
-            </Reveal>
-          )
+          return <JobColumn key={g.key} group={g} jobs={jobs} delay={gi * 100} />
         })}
       </div>
 

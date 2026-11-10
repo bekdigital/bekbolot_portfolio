@@ -260,6 +260,9 @@ export const stats = [
 // exactStart / exactEnd: optional YYYY-MM-DD dates for a precise total
 // dates: optional exact dates to show instead of month/year, e.g. { en: '8 May 2012 – 25 July 2012', ru: ... }
 // ---------------------------------------------------------------------------
+// The first JOBS_VISIBLE jobs of each column are shown; the rest appear after "Show all".
+export const JOBS_VISIBLE = 3
+
 export const experience = [
   {
     group: 'international',

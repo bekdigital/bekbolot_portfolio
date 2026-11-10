@@ -35,7 +35,10 @@ function JobCard({ job, id }) {
   const [open, setOpen] = useState(false)
   const panelId = `job-panel-${id}`
   const isCurrent = !job.end
-  const dates = `${formatDate(job.start, lang)} – ${isCurrent ? t(ui.present) : formatDate(job.end, lang)}`
+  // Exact dates (job.dates) are shown when given; otherwise month and year from start/end.
+  const dates = job.dates
+    ? t(job.dates)
+    : `${formatDate(job.start, lang)} – ${isCurrent ? t(ui.present) : formatDate(job.end, lang)}`
 
   return (
     <li className="relative pl-7">

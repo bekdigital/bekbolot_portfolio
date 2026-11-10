@@ -99,8 +99,8 @@ export const sections = {
     title: { en: 'Professional Experience', ru: 'Профессиональный опыт' },
     eyebrow: { en: 'Career', ru: 'Карьера' },
     intro: {
-      en: 'I began my career in the Armed Forces of the Kyrgyz Republic in 1997 and served until 2021, rising from platoon commander to Deputy Chief of the Operational Planning Directorate of the General Staff. I led operational planning, served with the UN mission in Darfur and helped draft key national documents, including the Military Doctrine and the first Annual Military Readiness Plan in the Kyrgyz language. Since 2021 I have continued my career in security for diplomatic missions and international organisations, including the EU Delegation, the World Bank and UNDP.',
-      ru: 'Свою карьеру я начал в 1997 году в Вооружённых силах Кыргызской Республики и прослужил до 2021 года, пройдя путь от командира взвода до заместителя начальника Оперативно-планового управления Генерального штаба. Руководил оперативным планированием, служил в миссии ООН в Дарфуре и участвовал в разработке важных государственных документов, в том числе Военной доктрины и первого Годового плана боевой готовности на кыргызском языке. С 2021 года продолжаю карьеру в сфере безопасности дипломатических представительств и международных организаций — Представительства ЕС, Всемирного банка и ПРООН.',
+      en: 'I began my career in the Armed Forces of the Kyrgyz Republic in 1997 and served until 2021, rising from platoon commander to Deputy Chief of the Operational Planning Directorate of the General Staff. I led operational planning, served with UN missions in Syria and Darfur and helped draft key national documents, including the Military Doctrine and the first Annual Military Readiness Plan in the Kyrgyz language. Since 2021 I have continued my career in security for diplomatic missions and international organisations, including the EU Delegation, the World Bank and UNDP.',
+      ru: 'Свою карьеру я начал в 1997 году в Вооружённых силах Кыргызской Республики и прослужил до 2021 года, пройдя путь от командира взвода до заместителя начальника Оперативно-планового управления Генерального штаба. Руководил оперативным планированием, служил в миссиях ООН в Сирии и Дарфуре и участвовал в разработке важных государственных документов, в том числе Военной доктрины и первого Годового плана боевой готовности на кыргызском языке. С 2021 года продолжаю карьеру в сфере безопасности дипломатических представительств и международных организаций — Представительства ЕС, Всемирного банка и ПРООН.',
     },
   },
   education: { title: { en: 'Education', ru: 'Образование' }, eyebrow: { en: 'Academic', ru: 'Академическое' } },
@@ -134,8 +134,8 @@ export const about = {
       ru: 'Специалист в области безопасности и обороны с 24-летним стажем службы в Вооружённых силах Кыргызской Республики, включая должность заместителя начальника Оперативно-планового управления Генерального штаба. Затем работал в сфере безопасности дипломатических представительств и Организации Объединённых Наций.',
     },
     {
-      en: 'Experienced in strategic and operational planning, full-cycle project management, multinational coordination within CSTO, SCO and UN frameworks, arms control inspections, and security analysis and reporting. UN Military Observer with UNAMID in Darfur, Sudan.',
-      ru: 'Опыт в стратегическом и оперативном планировании, управлении проектами полного цикла, многосторонней координации в рамках ОДКБ, ШОС и ООН, инспекциях по контролю над вооружениями, анализе обстановки и отчётности. Военный наблюдатель ООН в миссии ЮНАМИД (Дарфур, Судан).',
+      en: 'Experienced in strategic and operational planning, full-cycle project management, multinational coordination within CSTO, SCO and UN frameworks, arms control inspections, and security analysis and reporting. UN Military Observer with UNSMIS in Syria and UNAMID in Darfur, Sudan.',
+      ru: 'Опыт в стратегическом и оперативном планировании, управлении проектами полного цикла, многосторонней координации в рамках ОДКБ, ШОС и ООН, инспекциях по контролю над вооружениями, анализе обстановки и отчётности. Военный наблюдатель ООН в миссиях МООННС (Сирия) и ЮНАМИД (Дарфур, Судан).',
     },
     {
       en: "Holds a Master's degree in Management and graduated as a General Staff Officer from the German Armed Forces Command and Staff College. Fluent in Kyrgyz, Russian, English and Turkish, and continuously developing skills in artificial intelligence and digital tools.",
@@ -148,7 +148,7 @@ export const about = {
     { en: 'Multinational coordination (CSTO, SCO, UN)', ru: 'Многосторонняя координация (ОДКБ, ШОС, ООН)' },
     { en: 'Arms control inspections & verification', ru: 'Инспекции и верификация в области контроля над вооружениями' },
     { en: 'Security analysis & reporting', ru: 'Анализ безопасности и отчётность' },
-    { en: 'UN Military Observer, UNAMID', ru: 'Военный наблюдатель ООН, ЮНАМИД' },
+    { en: 'UN Military Observer: UNSMIS (Syria) & UNAMID (Darfur)', ru: 'Военный наблюдатель ООН: МООННС (Сирия) и ЮНАМИД (Дарфур)' },
     { en: 'General Staff Officer, Führungsakademie der Bundeswehr', ru: 'Офицер Генштаба, Командно-штабная академия Бундесвера' },
   ],
 }
@@ -160,8 +160,11 @@ export const stats = [
   { value: '24+', label: { en: 'Years of service', ru: 'Лет службы' } },
   { value: '6', label: { en: 'Languages', ru: 'Языков' } },
   {
-    value: { en: 'UNAMID & UNDP', ru: 'ЮНАМИД и ПРООН' },
-    label: { en: 'UN missions & agencies', ru: 'Миссии и агентства ООН' },
+    value: '2',
+    label: {
+      en: 'UN peacekeeping missions: Syria (UNSMIS) and Darfur (UNAMID)',
+      ru: 'Миротворческие миссии ООН: Сирия (МООННС) и Дарфур (ЮНАМИД)',
+    },
   },
   {
     value: '3',
@@ -176,6 +179,7 @@ export const stats = [
 // Experience (newest first). Dates are "MM/YYYY"; leave `end` empty for "present".
 // group: 'military' (left column) or 'international' (right column).
 // note: optional short line shown under the organisation.
+// dates: optional exact dates to show instead of month/year, e.g. { en: '8 May 2012 – 25 July 2012', ru: ... }
 // ---------------------------------------------------------------------------
 export const experience = [
   {
@@ -425,6 +429,42 @@ export const experience = [
       {
         en: "Initiated quick-impact projects, including sanitation facilities at the women's prison in Mellit and a water dam for a local village.",
         ru: 'Инициировал проекты быстрой отдачи, в том числе санитарные объекты в женской тюрьме в Меллите и водохранилище для местной деревни.',
+      },
+    ],
+  },
+  {
+    group: 'international',
+    note: {
+      en: 'Seconded from the Armed Forces of the Kyrgyz Republic',
+      ru: 'Командирован из Вооружённых сил Кыргызской Республики',
+    },
+    role: { en: 'UN Military Observer', ru: 'Военный наблюдатель ООН' },
+    organisation: {
+      en: 'United Nations Supervision Mission in Syria (UNSMIS)',
+      ru: 'Миссия Организации Объединённых Наций по наблюдению в Сирии (МООННС)',
+    },
+    location: { en: 'Deir ez-Zor, Syria', ru: 'Дейр-эз-Зор, Сирия' },
+    start: '05/2012',
+    end: '07/2012',
+    dates: { en: '8 May 2012 – 25 July 2012', ru: '8 мая 2012 – 25 июля 2012' },
+    responsibilities: [
+      {
+        en: 'Carried out the tasks of a UN military observer at the Deir ez-Zor team site.',
+        ru: 'Выполнял задачи военного наблюдателя ООН на опорном пункте в Дейр-эз-Зоре.',
+      },
+      {
+        en: 'Served as the communications officer of the team site.',
+        ru: 'Был офицером связи опорного пункта.',
+      },
+      {
+        en: 'Worked with the Political Affairs Officer on engagement with the government and opposition sides.',
+        ru: 'Совместно с сотрудником по политическим вопросам вёл работу с правительственной и оппозиционной сторонами.',
+      },
+    ],
+    achievements: [
+      {
+        en: 'Together with the Political Affairs Officer, helped establish dialogue between the government and opposition sides in Deir ez-Zor.',
+        ru: 'Совместно с сотрудником по политическим вопросам способствовал налаживанию диалога между правительственной и оппозиционной сторонами в Дейр-эз-Зоре.',
       },
     ],
   },

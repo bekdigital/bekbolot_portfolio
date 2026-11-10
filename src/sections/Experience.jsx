@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
-import { experience, sections, ui } from '../data/content'
+import { experience, gallery, sections, ui } from '../data/content'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import { ChevronIcon } from '../components/Icons'
@@ -149,6 +149,37 @@ export default function Experience() {
           )
         })}
       </div>
+
+      {/* Photo gallery */}
+      {gallery.length > 0 && (
+        <div className="mt-16">
+          <h3 className="mb-5 flex items-center gap-3 text-xl font-semibold text-navy-950 dark:text-white">
+            <span aria-hidden="true" className="h-6 w-1 rounded-full bg-accent" />
+            {t(ui.galleryHeading)}
+          </h3>
+          <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+            {gallery.map((photo, i) => (
+              <Reveal as="li" key={i} delay={i * 80} className={i === gallery.length - 1 && gallery.length % 2 ? 'col-span-2 lg:col-span-1' : ''}>
+                <figure className="card h-full overflow-hidden">
+                  <div className="overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={t(photo.alt)}
+                    loading="lazy"
+                    className={`aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105 ${
+                      photo.position === 'top' ? 'object-top' : photo.position === 'right' ? 'object-right' : ''
+                    }`}
+                  />
+                  </div>
+                  <figcaption className="p-3 text-xs leading-snug text-navy-600 dark:text-navy-200 sm:text-sm">
+                    {t(photo.caption)}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      )}
     </Section>
   )
 }

@@ -86,6 +86,7 @@ export const ui = {
   linkedinProfile: { en: 'LinkedIn profile', ru: 'Профиль LinkedIn' },
   telegram: { en: 'Telegram', ru: 'Telegram' },
   inNumbers: { en: 'My career in numbers', ru: 'Моя карьера в цифрах' },
+  galleryHeading: { en: 'Moments from my career', ru: 'Моменты моей карьеры' },
   languagesHeading: { en: 'Languages', ru: 'Языки' },
   commToolsHeading: { en: 'Communication tools & skills', ru: 'Средства и навыки коммуникации' },
   readLess: { en: 'Show less', ru: 'Свернуть' },
@@ -582,6 +583,43 @@ export const experience = [
     ],
     achievements: [],
   },
+]
+
+// ---------------------------------------------------------------------------
+// Photo gallery at the end of the Experience section ("Moments from my career").
+// Photos are in /public/gallery/. `position` sets which part of the photo
+// stays visible when it is cropped (e.g. 'top' for portraits).
+// ---------------------------------------------------------------------------
+export const gallery = [
+  {
+    src: '/gallery/mountain-training.jpg',
+    alt: {
+      en: 'Bekbolot Tolomushov in a climbing helmet on a glacier during mountain training',
+      ru: 'Бекболот Толомушов в альпинистской каске на леднике во время горной подготовки',
+    },
+    caption: {
+      en: 'Mountaineering and mountain rescue training, French High Mountain School',
+      ru: 'Подготовка по альпинизму и горному спасению, Высокогорная военная школа, Франция',
+    },
+  },
+  {
+    src: '/gallery/ice-climbing.jpg',
+    alt: {
+      en: 'Climbers on a frozen waterfall during ice climbing training',
+      ru: 'Альпинисты на замёрзшем водопаде во время тренировки по ледолазанию',
+    },
+    caption: { en: 'Ice climbing training in the French Alps', ru: 'Тренировка по ледолазанию во французских Альпах' },
+  },
+  {
+    src: '/gallery/unamid.jpg',
+    position: 'top',
+    alt: {
+      en: 'Bekbolot Tolomushov in a UN blue beret at a UNAMID team site',
+      ru: 'Бекболот Толомушов в голубом берете ООН на опорном пункте ЮНАМИД',
+    },
+    caption: { en: 'UN Military Observer, UNAMID, Darfur', ru: 'Военный наблюдатель ООН, ЮНАМИД, Дарфур' },
+  },
+
 ]
 
 // ---------------------------------------------------------------------------

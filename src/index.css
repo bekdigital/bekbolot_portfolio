@@ -21,6 +21,11 @@
   .site-chrome :focus-visible {
     @apply ring-offset-navy-900 dark:ring-offset-navy-975;
   }
+  /* Elements with the `hidden` attribute stay hidden even if they have a
+     display class such as `flex` (used by the Show all / Details buttons) */
+  [hidden] {
+    display: none !important;
+  }
   main:focus {
     outline: none;
   }

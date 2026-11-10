@@ -907,6 +907,10 @@ export const communication = [
 // ---------------------------------------------------------------------------
 // Skills (grouped)
 // ---------------------------------------------------------------------------
+// The first SKILLS_VISIBLE skills of each group are shown; the rest appear
+// after "Show all". Put the most important skills first.
+export const SKILLS_VISIBLE = 3
+
 export const skills = [
   {
     group: { en: 'Planning & Project Management', ru: 'Планирование и управление проектами' },

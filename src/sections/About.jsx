@@ -103,10 +103,22 @@ export default function About() {
               as="li"
               key={i}
               delay={(i % 3) * 80}
-              className={`card overflow-hidden ${s.list || i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''} ${
+              className={`card overflow-hidden ${s.wide ? 'col-span-2 lg:col-span-1' : ''} ${
                 isUN ? 'border-transparent !bg-[#009EDB] dark:!bg-[#0077B6]' : ''
-              }`}
+              } ${s.portrait ? 'flex' : ''}`}
             >
+              {/* Optional personal photo on the left, full card height */}
+              {s.portrait && (
+                <img
+                  src={s.portrait}
+                  alt={t(s.portraitAlt)}
+                  width="480"
+                  height="640"
+                  loading="lazy"
+                  className="w-32 shrink-0 object-cover object-top sm:w-36"
+                />
+              )}
+              <div className="min-w-0 flex-1">
               <StatVisual visual={s.visual} image={s.image} imageAlt={t(s.label)} />
               <div className="p-4 sm:p-5">
                 <p
@@ -131,6 +143,7 @@ export default function About() {
                     ))}
                   </ul>
                 )}
+              </div>
               </div>
             </Reveal>
           )

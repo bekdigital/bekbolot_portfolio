@@ -3,7 +3,7 @@
 // A card can also use its own photo with `image: '/numbers/army.jpg'`.
 import { FlagEU, FlagFrance, FlagGermany, FlagKyrgyzstan, FlagTurkiye } from './Flags'
 
-const band = 'relative flex h-24 items-center justify-center overflow-hidden rounded-t-xl'
+const band = 'relative flex h-24 items-center justify-center overflow-hidden'
 
 /** Blue peacekeeper helmet (drawing). */
 function BlueHelmet({ className }) {
@@ -64,14 +64,14 @@ export default function StatVisual({ visual, image, imageAlt = '' }) {
     case 'army':
       return (
         <div className={`${band} gap-2 bg-gradient-to-br from-[#3d4a2c] to-[#5b6b3a] sm:gap-4`}>
-          <FlagKyrgyzstan className="h-9 w-auto sm:h-14" title="Flag of Kyrgyzstan" />
+          <FlagKyrgyzstan className="h-9 w-auto sm:h-10" title="Flag of Kyrgyzstan" />
           {/* Flag of the Armed Forces: "Долг · Честь · Отечество" (Duty · Honour · Fatherland) */}
           <img
             src="/numbers/armed-forces-flag.png"
             alt="Flag of the Armed Forces of the Kyrgyz Republic"
             width="349"
             height="216"
-            className="h-9 w-auto rounded-sm shadow-sm ring-1 ring-black/10 sm:h-14"
+            className="h-9 w-auto rounded-sm shadow-sm ring-1 ring-black/10 sm:h-10"
           />
         </div>
       )
@@ -120,11 +120,11 @@ export default function StatVisual({ visual, image, imageAlt = '' }) {
       )
     case 'flags':
       return (
-        <div className={`${band} gap-3 bg-navy-100 dark:bg-navy-800`}>
-          <FlagKyrgyzstan className="h-9 w-auto" />
-          <FlagTurkiye className="h-9 w-auto" />
-          <FlagGermany className="h-9 w-auto" />
-          <FlagFrance className="h-9 w-auto" />
+        <div className={`${band} gap-1.5 bg-navy-100 px-2 dark:bg-navy-800 sm:gap-3`}>
+          <FlagKyrgyzstan className="h-6 w-auto sm:h-9" />
+          <FlagTurkiye className="h-6 w-auto sm:h-9" />
+          <FlagGermany className="h-6 w-auto sm:h-9" />
+          <FlagFrance className="h-6 w-auto sm:h-9" />
         </div>
       )
     default:

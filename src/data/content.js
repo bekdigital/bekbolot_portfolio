@@ -176,8 +176,20 @@ export const about = {
 //   visual: 'army' | 'un' | 'diplomatic' | 'peacekeeping' | 'languages' | 'flags'
 //                                – picture at the top of the card
 //   image: '/numbers/army.jpg'   – optional own photo instead of the picture
+//   portrait: '/numbers/x.jpg'   – optional personal photo on the left side
+//   wide: true                   – card spans the full width on phones
 export const stats = [
-  { value: '24', visual: 'army', label: { en: 'Years of army service', ru: 'Лет службы в армии' } },
+  {
+    value: '24',
+    visual: 'army',
+    wide: true,
+    portrait: '/numbers/army-portrait.jpg',
+    portraitAlt: {
+      en: 'Bekbolot Tolomushov in the uniform of the Armed Forces of the Kyrgyz Republic',
+      ru: 'Бекболот Толомушов в форме Вооружённых сил Кыргызской Республики',
+    },
+    label: { en: 'Years of army service', ru: 'Лет службы в армии' },
+  },
   {
     sumOf: 'un',
     visual: 'un',
@@ -203,8 +215,17 @@ export const stats = [
     },
   },
   {
+    value: '4',
+    visual: 'flags',
+    label: {
+      en: 'Countries of education: Kyrgyzstan, Türkiye, Germany, France',
+      ru: 'Страны обучения: Кыргызстан, Турция, Германия, Франция',
+    },
+  },
+  {
     value: '6',
     visual: 'languages',
+    wide: true,
     label: { en: 'Languages', ru: 'Языков' },
     list: [
       { en: 'English – fluent', ru: 'Английский — свободно' },
@@ -214,14 +235,6 @@ export const stats = [
       { en: 'German – B1', ru: 'Немецкий — B1' },
       { en: 'French – B1', ru: 'Французский — B1' },
     ],
-  },
-  {
-    value: '4',
-    visual: 'flags',
-    label: {
-      en: 'Countries of education: Kyrgyzstan, Türkiye, Germany, France',
-      ru: 'Страны обучения: Кыргызстан, Турция, Германия, Франция',
-    },
   },
 ]
 

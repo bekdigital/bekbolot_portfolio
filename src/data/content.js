@@ -43,7 +43,7 @@ export const ui = {
     experience: { en: 'Experience', ru: 'Опыт' },
     education: { en: 'Education', ru: 'Образование' },
     training: { en: 'Training', ru: 'Курсы' },
-    languages: { en: 'Languages', ru: 'Языки' },
+    languages: { en: 'Communication', ru: 'Коммуникация' },
     skills: { en: 'Skills', ru: 'Навыки' },
     projects: { en: 'Projects', ru: 'Проекты' },
     contact: { en: 'Contact', ru: 'Контакты' },
@@ -73,6 +73,8 @@ export const ui = {
   details: { en: 'Details', ru: 'Подробнее' },
   readMore: { en: 'Read more', ru: 'Читать далее' },
   inNumbers: { en: 'My career in numbers', ru: 'Моя карьера в цифрах' },
+  languagesHeading: { en: 'Languages', ru: 'Языки' },
+  commToolsHeading: { en: 'Communication tools & skills', ru: 'Средства и навыки коммуникации' },
   readLess: { en: 'Show less', ru: 'Свернуть' },
   militaryCareer: { en: 'Military Career', ru: 'Военная карьера' },
   militaryCareerHint: { en: 'Armed Forces of the Kyrgyz Republic', ru: 'Вооружённые силы Кыргызской Республики' },
@@ -111,7 +113,10 @@ export const sections = {
     title: { en: 'Training & Certificates', ru: 'Курсы и сертификаты' },
     eyebrow: { en: 'Professional development', ru: 'Профессиональное развитие' },
   },
-  languages: { title: { en: 'Languages', ru: 'Языки' }, eyebrow: { en: 'Communication', ru: 'Коммуникация' } },
+  languages: {
+    title: { en: 'Communication', ru: 'Коммуникация' },
+    eyebrow: { en: 'Languages & tools', ru: 'Языки и средства связи' },
+  },
   skills: { title: { en: 'Skills', ru: 'Навыки' }, eyebrow: { en: 'Competencies', ru: 'Компетенции' } },
   projects: {
     title: { en: 'Projects', ru: 'Проекты' },
@@ -860,12 +865,48 @@ export const training = [
 // Languages. `level` is a percentage used for the bar width.
 // ---------------------------------------------------------------------------
 export const languages = [
-  { name: { en: 'Kyrgyz', ru: 'Кыргызский' }, level: 100, label: { en: 'Native', ru: 'Родной' } },
+  { name: { en: 'English', ru: 'Английский' }, level: 80, label: { en: 'Fluent (C1)', ru: 'Свободно (C1)' } },
   { name: { en: 'Russian', ru: 'Русский' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
   { name: { en: 'Turkish', ru: 'Турецкий' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
-  { name: { en: 'English', ru: 'Английский' }, level: 80, label: { en: 'Fluent (C1)', ru: 'Свободно (C1)' } },
-  { name: { en: 'French', ru: 'Французский' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
+  { name: { en: 'Kyrgyz', ru: 'Кыргызский' }, level: 100, label: { en: 'Native', ru: 'Родной' } },
   { name: { en: 'German', ru: 'Немецкий' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
+  { name: { en: 'French', ru: 'Французский' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
+]
+
+// ---------------------------------------------------------------------------
+// Communication tools & skills (right column of the Communication section)
+// ---------------------------------------------------------------------------
+export const communication = [
+  {
+    title: { en: 'Radio & field communications', ru: 'Радио- и полевая связь' },
+    items: [
+      { en: 'HF, VHF and UHF radio communications', ru: 'КВ, УКВ и ДМВ радиосвязь' },
+      { en: 'Trained in radio voice procedures', ru: 'Подготовка по правилам ведения радиообмена' },
+      { en: 'Satellite communications', ru: 'Спутниковая связь' },
+      { en: 'UN warden system support', ru: 'Поддержка системы старост ООН (warden system)' },
+      { en: 'Team site communications officer (UNSMIS)', ru: 'Офицер связи опорного пункта (МООННС)' },
+    ],
+  },
+  {
+    title: { en: 'Professional communication', ru: 'Профессиональная коммуникация' },
+    items: [
+      { en: 'Briefings and analytical reports for senior leadership', ru: 'Брифинги и аналитические доклады для руководства' },
+      { en: 'Negotiations with partner countries (CSTO, SCO, bilateral)', ru: 'Переговоры со странами-партнёрами (ОДКБ, ШОС, двусторонние)' },
+      { en: 'Liaison with local authorities and communities', ru: 'Взаимодействие с местными властями и общинами' },
+      { en: 'Facilitating dialogue between conflict parties', ru: 'Содействие диалогу между сторонами конфликта' },
+      { en: 'Translation from Kyrgyz and Russian into English', ru: 'Перевод с кыргызского и русского на английский' },
+    ],
+  },
+  {
+    title: { en: 'Digital communication', ru: 'Цифровая коммуникация' },
+    items: [
+      { en: 'Outlook & MS Office', ru: 'Outlook и MS Office' },
+      { en: 'Google Workspace', ru: 'Google Workspace' },
+      { en: 'Notion', ru: 'Notion' },
+      { en: 'Miro', ru: 'Miro' },
+      { en: 'Canva', ru: 'Canva' },
+    ],
+  },
 ]
 
 // ---------------------------------------------------------------------------

@@ -111,6 +111,7 @@
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero-fade, .job-panel { animation: none !important; }
   .job-panel[hidden], .expand-panel[hidden], .tab-panel[hidden] { display: block !important; }
+  .about-text { max-height: none !important; }
   .expand-panel figure { display: none; }
   .lang-bar { width: var(--level) !important; }
 

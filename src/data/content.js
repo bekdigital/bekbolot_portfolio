@@ -71,6 +71,8 @@ export const ui = {
   academicEducation: { en: 'Academic education', ru: 'Академическое образование' },
   coursesHeading: { en: 'Courses & training', ru: 'Курсы и подготовка' },
   details: { en: 'Details', ru: 'Подробнее' },
+  readMore: { en: 'Read more', ru: 'Читать далее' },
+  readLess: { en: 'Show less', ru: 'Свернуть' },
   militaryCareer: { en: 'Military Career', ru: 'Военная карьера' },
   militaryCareerHint: { en: 'Armed Forces of the Kyrgyz Republic', ru: 'Вооружённые силы Кыргызской Республики' },
   internationalCareer: { en: 'International Organisations & Diplomatic Missions', ru: 'Международные организации и дипмиссии' },
@@ -156,9 +158,28 @@ export const about = {
 // ---------------------------------------------------------------------------
 // Key numbers
 // ---------------------------------------------------------------------------
+// Options for each card:
+//   value: '24'                  – fixed text
+//   sumOf: 'un' | 'diplomatic'   – total time of the jobs in `experience`
+//                                  tagged with that word, calculated
+//                                  automatically (grows while a job is current)
+//   list: [ { en, ru }, ... ]    – optional short list under the label
 export const stats = [
-  { value: '24+', label: { en: 'Years of service', ru: 'Лет службы' } },
-  { value: '6', label: { en: 'Languages', ru: 'Языков' } },
+  { value: '24', label: { en: 'Years of army service', ru: 'Лет службы в армии' } },
+  {
+    sumOf: 'un',
+    label: {
+      en: 'UN experience: UNSMIS, UNAMID and UNDP',
+      ru: 'Опыт работы в ООН: МООННС, ЮНАМИД и ПРООН',
+    },
+  },
+  {
+    sumOf: 'diplomatic',
+    label: {
+      en: 'Experience with diplomatic missions: EU Delegation, World Bank',
+      ru: 'Работа с дипмиссиями: Представительство ЕС, Всемирный банк',
+    },
+  },
   {
     value: '2',
     label: {
@@ -167,10 +188,22 @@ export const stats = [
     },
   },
   {
-    value: '3',
+    value: '6',
+    label: { en: 'Languages', ru: 'Языков' },
+    list: [
+      { en: 'English – fluent', ru: 'Английский — свободно' },
+      { en: 'Russian – fluent', ru: 'Русский — свободно' },
+      { en: 'Turkish – fluent', ru: 'Турецкий — свободно' },
+      { en: 'Kyrgyz – native', ru: 'Кыргызский — родной' },
+      { en: 'German – intermediate', ru: 'Немецкий — средний' },
+      { en: 'French – basic', ru: 'Французский — базовый' },
+    ],
+  },
+  {
+    value: '4',
     label: {
-      en: 'Countries of education: Kyrgyzstan, Germany, Türkiye',
-      ru: 'Страны обучения: Кыргызстан, Германия, Турция',
+      en: 'Countries of education: Kyrgyzstan, Türkiye, Germany, France',
+      ru: 'Страны обучения: Кыргызстан, Турция, Германия, Франция',
     },
   },
 ]
@@ -179,11 +212,14 @@ export const stats = [
 // Experience (newest first). Dates are "MM/YYYY"; leave `end` empty for "present".
 // group: 'military' (left column) or 'international' (right column).
 // note: optional short line shown under the organisation.
+// tags: ['un'] / ['diplomatic'] – counted in the matching key-number card
+// exactStart / exactEnd: optional YYYY-MM-DD dates for a precise total
 // dates: optional exact dates to show instead of month/year, e.g. { en: '8 May 2012 – 25 July 2012', ru: ... }
 // ---------------------------------------------------------------------------
 export const experience = [
   {
     group: 'international',
+    tags: ['un'],
     role: { en: 'Security Operations Support', ru: 'Специалист по поддержке операций безопасности' },
     organisation: {
       en: 'United Nations Development Programme (UNDP)',
@@ -210,6 +246,7 @@ export const experience = [
   },
   {
     group: 'international',
+    tags: ['un'],
     role: { en: 'UN Security Operations Centre (UNSOC) Operator', ru: 'Оператор Оперативного центра безопасности ООН (UNSOC)' },
     organisation: {
       en: 'United Nations Development Programme (UNDP)',
@@ -253,6 +290,7 @@ export const experience = [
   },
   {
     group: 'international',
+    tags: ['diplomatic'],
     note: {
       en: 'Security for the EU Delegation, the World Bank and other diplomatic missions',
       ru: 'Охрана Представительства ЕС, Всемирного банка и других дипмиссий',
@@ -396,6 +434,7 @@ export const experience = [
   },
   {
     group: 'international',
+    tags: ['un'],
     note: {
       en: 'Seconded from the Armed Forces of the Kyrgyz Republic',
       ru: 'Командирован из Вооружённых сил Кыргызской Республики',
@@ -434,6 +473,7 @@ export const experience = [
   },
   {
     group: 'international',
+    tags: ['un'],
     note: {
       en: 'Seconded from the Armed Forces of the Kyrgyz Republic',
       ru: 'Командирован из Вооружённых сил Кыргызской Республики',
@@ -446,6 +486,8 @@ export const experience = [
     location: { en: 'Deir ez-Zor, Syria', ru: 'Дейр-эз-Зор, Сирия' },
     start: '05/2012',
     end: '07/2012',
+    exactStart: '2012-05-08', // used for the UN experience total
+    exactEnd: '2012-07-25',
     dates: { en: '8 May 2012 – 25 July 2012', ru: '8 мая 2012 – 25 июля 2012' },
     responsibilities: [
       {
@@ -821,7 +863,7 @@ export const languages = [
   { name: { en: 'Russian', ru: 'Русский' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
   { name: { en: 'Turkish', ru: 'Турецкий' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
   { name: { en: 'English', ru: 'Английский' }, level: 80, label: { en: 'Fluent (C1)', ru: 'Свободно (C1)' } },
-  { name: { en: 'French', ru: 'Французский' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
+  { name: { en: 'French', ru: 'Французский' }, level: 30, label: { en: 'Basic', ru: 'Базовый' } },
   { name: { en: 'German', ru: 'Немецкий' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
 ]
 

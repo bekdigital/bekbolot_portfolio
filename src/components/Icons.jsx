@@ -93,3 +93,8 @@ export const TelegramIcon = (p) => (
     <path d="M9 13l12-9" />
   </svg>
 )
+export const FacebookIcon = (p) => (
+  <svg {...base} fill="currentColor" stroke="none" {...p}>
+    <path d="M14 8.5V6.8c0-.8.5-1.3 1.4-1.3H17V2.3c-.8-.1-1.7-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5v1.9H7.2v3.6H10V22h4v-9.9h2.8l.5-3.6H14z" />
+  </svg>
+)

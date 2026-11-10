@@ -26,6 +26,7 @@ export const profile = {
   email: 'bekbolot.tolomushov@gmail.com',
   linkedin: 'https://www.linkedin.com/in/bek-tolo1/',
   telegram: 'Growing4455', // username without @ (link: t.me/Growing4455)
+  facebook: 'https://www.facebook.com/jalynu',
   // Files in the /public folder
   cvFile: '/Bekbolot_Tolomushov_CV.pdf',
   // Contact form delivery via web3forms.com. Paste your free access key here.
@@ -85,6 +86,7 @@ export const ui = {
   copied: { en: 'Copied!', ru: 'Скопировано!' },
   linkedinProfile: { en: 'LinkedIn profile', ru: 'Профиль LinkedIn' },
   telegram: { en: 'Telegram', ru: 'Telegram' },
+  facebook: { en: 'Facebook', ru: 'Facebook' },
   inNumbers: { en: 'My career in numbers', ru: 'Моя карьера в цифрах' },
   galleryHeading: { en: 'Moments from my career', ru: 'Моменты моей карьеры' },
   languagesHeading: { en: 'Languages', ru: 'Языки' },

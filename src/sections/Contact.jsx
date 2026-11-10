@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext'
 import { contactForm, profile, sections, ui } from '../data/content'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
-import { CheckIcon, CopyIcon, DownloadIcon, LinkedInIcon, MailIcon, PinIcon, TelegramIcon } from '../components/Icons'
+import { CheckIcon, CopyIcon, DownloadIcon, LinkedInIcon, MailIcon, PinIcon, TelegramIcon, FacebookIcon } from '../components/Icons'
 
 export default function Contact() {
   const { t } = useApp()
@@ -126,6 +126,24 @@ export default function Contact() {
                 </div>
               </li>
             )}
+            {profile.facebook && (
+              <li className="flex items-center gap-4">
+                <span aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent-dark dark:text-accent-light">
+                  <FacebookIcon />
+                </span>
+                <div>
+                  <p className="text-sm text-navy-500 dark:text-navy-300">{t(ui.facebook)}</p>
+                  <a
+                    href={profile.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-navy-950 hover:text-accent-dark dark:text-white dark:hover:text-accent-light"
+                  >
+                    facebook.com/{profile.facebook.split('/').filter(Boolean).pop()}
+                  </a>
+                </div>
+              </li>
+            )}
             <li className="flex items-center gap-4">
               <span aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent-dark dark:text-accent-light">
                 <PinIcon />
@@ -155,6 +173,12 @@ export default function Contact() {
               <a href={`https://t.me/${profile.telegram}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary py-2.5">
                 <TelegramIcon width={18} height={18} />
                 {t(ui.telegram)}
+              </a>
+            )}
+            {profile.facebook && (
+              <a href={profile.facebook} target="_blank" rel="noopener noreferrer" className="btn btn-secondary py-2.5">
+                <FacebookIcon width={18} height={18} />
+                {t(ui.facebook)}
               </a>
             )}
           </div>

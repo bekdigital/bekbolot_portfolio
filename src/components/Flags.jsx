@@ -22,21 +22,15 @@ function starPoints(cx, cy, outer, inner, points, rotation = -90) {
 }
 
 export function FlagKyrgyzstan({ className = '', title = 'Kyrgyzstan' }) {
+  // Current (2023) flag of the Kyrgyz Republic, from /public/flags/kyrgyzstan.png
   return (
-    <Flag viewBox="0 0 250 150" title={title} className={className}>
-      <rect width="250" height="150" fill="#E8112D" />
-      {/* sun with 40 rays */}
-      <polygon points={starPoints(125, 75, 48, 30, 40)} fill="#FFEF00" />
-      <circle cx="125" cy="75" r="28" fill="#FFEF00" />
-      {/* tunduk (roof of the yurt) */}
-      <circle cx="125" cy="75" r="21" fill="none" stroke="#E8112D" strokeWidth="4" />
-      <path
-        d="M106 66 Q125 58 144 66 M106 84 Q125 92 144 84 M110 61 Q118 75 110 89 M140 61 Q132 75 140 89 M116 57 Q125 75 116 93 M134 57 Q125 75 134 93"
-        fill="none"
-        stroke="#E8112D"
-        strokeWidth="3"
-      />
-    </Flag>
+    <img
+      src="/flags/kyrgyzstan.png"
+      alt={title}
+      width="250"
+      height="150"
+      className={`rounded-sm shadow-sm ring-1 ring-black/10 ${className}`}
+    />
   )
 }
 

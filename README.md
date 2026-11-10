@@ -23,10 +23,9 @@ npm run preview  # preview the production build locally
 **All text lives in `src/data/content.js`.** You don't need to touch the components.
 
 - Text in two languages is written as `{ en: '...', ru: '...' }`.
-- To add a job, course, skill or project, copy an existing item in its list and edit it.
+- To add a job, course or skill, copy an existing item in its list and edit it.
 - Education has two parts: `education` (academic: names in the original language, English and Russian, photo, study period, publication) and `training` (courses & certificates).
 - Jobs use `MM/YYYY` dates. Leave `end: ''` for a current job ("present").
-- A project with `url: ''` shows "Details coming soon".
 
 ## Files to replace
 
@@ -35,7 +34,6 @@ npm run preview  # preview the production build locally
 | Professional photo | Replace `public/profile.jpg` (square, at least 512×512 px). |
 | CV | Replace `public/Bekbolot_Tolomushov_CV.pdf` (keep the same file name). |
 | School photos | Files in `public/education/`; set `image` and `imageCredit` for each school in `education` in `content.js`. |
-| Project links and images | `projects` in `content.js` (`url`, and optionally `image`, e.g. `/projects/alchik.jpg` in `public/projects/`). |
 | Website address | The `canonical`, `og:url` and `og:image` URLs in `index.html` after you deploy. |
 | Social preview image (optional) | `public/og-image.png` (1200×630 px). |
 

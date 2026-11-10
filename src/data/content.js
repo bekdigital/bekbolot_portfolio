@@ -3,7 +3,7 @@
  *
  * - Text that differs by language is written as { en: '...', ru: '...' }.
  * - Text that is the same in both languages (names, emails, dates) is a plain string.
- * - To add a job, course or project, copy an existing item and edit it.
+ * - To add a job, course or skill, copy an existing item and edit it.
  *
  * Nothing here is shown that you don't put here: date of birth and phone
  * number are intentionally NOT included.
@@ -45,7 +45,6 @@ export const ui = {
     training: { en: 'Training', ru: 'Курсы' },
     languages: { en: 'Communication', ru: 'Коммуникация' },
     skills: { en: 'Skills', ru: 'Навыки' },
-    projects: { en: 'Projects', ru: 'Проекты' },
     contact: { en: 'Contact', ru: 'Контакты' },
   },
   skipToContent: { en: 'Skip to content', ru: 'Перейти к содержанию' },
@@ -118,10 +117,6 @@ export const sections = {
     eyebrow: { en: 'Languages & tools', ru: 'Языки и средства связи' },
   },
   skills: { title: { en: 'Skills', ru: 'Навыки' }, eyebrow: { en: 'Competencies', ru: 'Компетенции' } },
-  projects: {
-    title: { en: 'Projects', ru: 'Проекты' },
-    eyebrow: { en: 'Personal & digital', ru: 'Личные и цифровые' },
-  },
   contact: {
     title: { en: 'Contact', ru: 'Контакты' },
     eyebrow: { en: 'Get in touch', ru: 'Связаться' },
@@ -984,52 +979,6 @@ export const skills = [
       { en: 'HTML / CSS / JavaScript / React', ru: 'HTML / CSS / JavaScript / React' },
       { en: 'AI tools', ru: 'Инструменты ИИ' },
     ],
-  },
-]
-
-// ---------------------------------------------------------------------------
-// Projects. Replace `url` (empty string = "coming soon") and optionally `image`.
-// ---------------------------------------------------------------------------
-export const projects = [
-  {
-    title: { en: 'Tian Shan Wildlife', ru: 'Tian Shan Wildlife' },
-    type: { en: 'YouTube channel', ru: 'YouTube-канал' },
-    description: {
-      en: 'A channel about the wildlife and nature of the Tian Shan mountains. (Placeholder: add a short description.)',
-      ru: 'Канал о дикой природе гор Тянь-Шаня. (Заполнитель: добавьте краткое описание.)',
-    },
-    url: '', // TODO: e.g. 'https://www.youtube.com/@...'
-    image: '', // optional, e.g. '/projects/tian-shan.jpg'
-  },
-  {
-    title: { en: 'Security Associated', ru: 'Security Associated' },
-    type: { en: 'Company website', ru: 'Сайт компании' },
-    description: {
-      en: 'Website for a Bishkek security company. (Placeholder: describe your role.)',
-      ru: 'Сайт охранной компании в Бишкеке. (Заполнитель: опишите вашу роль.)',
-    },
-    url: 'https://securitykg.com',
-    image: '',
-  },
-  {
-    title: { en: 'Alchik', ru: 'Алчик' },
-    type: { en: 'Game website', ru: 'Сайт игры' },
-    description: {
-      en: 'A website for the traditional Kyrgyz game of Alchik. (Placeholder: add a short description.)',
-      ru: 'Сайт традиционной кыргызской игры «Алчик». (Заполнитель: добавьте описание.)',
-    },
-    url: '', // TODO
-    image: '',
-  },
-  {
-    title: { en: 'English Word Game', ru: 'Игра в английские слова' },
-    type: { en: 'Learning game website', ru: 'Обучающая игра' },
-    description: {
-      en: 'A web game for learning English vocabulary. (Placeholder: add a short description.)',
-      ru: 'Веб-игра для изучения английской лексики. (Заполнитель: добавьте описание.)',
-    },
-    url: '', // TODO
-    image: '',
   },
 ]
 

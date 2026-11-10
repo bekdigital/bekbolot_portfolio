@@ -8,7 +8,6 @@ import Experience from './sections/Experience'
 import Education from './sections/Education'
 import Languages from './sections/Languages'
 import Skills from './sections/Skills'
-import Projects from './sections/Projects'
 import Contact from './sections/Contact'
 
 export default function App() {
@@ -26,7 +25,6 @@ export default function App() {
         <Education />
         <Languages />
         <Skills />
-        <Projects />
         <Contact />
       </main>
       <Footer />

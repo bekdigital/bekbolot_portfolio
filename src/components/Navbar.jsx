@@ -4,7 +4,7 @@ import { profile, ui } from '../data/content'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons'
 
-const NAV_IDS = ['about', 'experience', 'education', 'languages', 'skills', 'projects', 'contact']
+const NAV_IDS = ['about', 'experience', 'education', 'languages', 'skills', 'contact']
 
 function LanguageSwitcher() {
   const { lang, setLang, t } = useApp()

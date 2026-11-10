@@ -29,7 +29,7 @@ export const profile = {
   cvFile: '/Bekbolot_Tolomushov_CV.pdf',
   // Contact form delivery via web3forms.com. Paste your free access key here.
   // While it is empty, the form opens the visitor's email app instead.
-  web3formsKey: '',
+  web3formsKey: '4b93349d-5411-4650-a7a9-9788093dbb6c',
   photo: '/profile.jpg',
   photoAlt: {
     en: 'Portrait of Bekbolot Tolomushov',

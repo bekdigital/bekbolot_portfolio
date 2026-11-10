@@ -32,6 +32,12 @@ export const profile = {
   // While it is empty, the form opens the visitor's email app instead.
   web3formsKey: '4b93349d-5411-4650-a7a9-9788093dbb6c',
   photo: '/profile.jpg',
+  // Background photo of the top section ('' = plain background)
+  heroBackground: '/hero-background.jpg',
+  heroBackgroundAlt: {
+    en: 'Bekbolot Tolomushov giving a briefing at an operational map',
+    ru: 'Бекболот Толомушов проводит брифинг у оперативной карты',
+  },
   photoAlt: {
     en: 'Portrait of Bekbolot Tolomushov',
     ru: 'Портрет Бекболота Толомушова',

@@ -71,6 +71,10 @@ export const ui = {
   academicEducation: { en: 'Academic education', ru: 'Академическое образование' },
   coursesHeading: { en: 'Courses & training', ru: 'Курсы и подготовка' },
   details: { en: 'Details', ru: 'Подробнее' },
+  militaryCareer: { en: 'Military Career', ru: 'Военная карьера' },
+  militaryCareerHint: { en: 'Armed Forces of the Kyrgyz Republic', ru: 'Вооружённые силы Кыргызской Республики' },
+  internationalCareer: { en: 'International Organisations & Diplomatic Missions', ru: 'Международные организации и дипмиссии' },
+  internationalCareerHint: { en: 'United Nations, EU Delegation, World Bank', ru: 'ООН, Представительство ЕС, Всемирный банк' },
   hide: { en: 'Hide', ru: 'Скрыть' },
   showAllCourses: { en: 'Show all', ru: 'Показать все' },
   coursesTab: { en: 'Professional courses', ru: 'Профессиональные курсы' },
@@ -166,9 +170,12 @@ export const stats = [
 
 // ---------------------------------------------------------------------------
 // Experience (newest first). Dates are "MM/YYYY"; leave `end` empty for "present".
+// group: 'military' (left column) or 'international' (right column).
+// note: optional short line shown under the organisation.
 // ---------------------------------------------------------------------------
 export const experience = [
   {
+    group: 'international',
     role: { en: 'Security Operations Support', ru: 'Специалист по поддержке операций безопасности' },
     organisation: {
       en: 'United Nations Development Programme (UNDP)',
@@ -194,6 +201,7 @@ export const experience = [
     achievements: [],
   },
   {
+    group: 'international',
     role: { en: 'UN Security Operations Centre (UNSOC) Operator', ru: 'Оператор Оперативного центра безопасности ООН (UNSOC)' },
     organisation: {
       en: 'United Nations Development Programme (UNDP)',
@@ -236,6 +244,11 @@ export const experience = [
     ],
   },
   {
+    group: 'international',
+    note: {
+      en: 'Security for the EU Delegation, the World Bank and other diplomatic missions',
+      ru: 'Охрана Представительства ЕС, Всемирного банка и других дипмиссий',
+    },
     role: {
       en: 'Mobile Patrol Member / Field Safety Expert',
       ru: 'Сотрудник мобильного патруля / эксперт по полевой безопасности',
@@ -278,6 +291,7 @@ export const experience = [
     ],
   },
   {
+    group: 'military',
     role: {
       en: 'Deputy Chief, Operational Planning Directorate',
       ru: 'Заместитель начальника Оперативно-планового управления',
@@ -335,6 +349,7 @@ export const experience = [
     ],
   },
   {
+    group: 'military',
     role: {
       en: 'Senior Officer, Main Operational Directorate',
       ru: 'Старший офицер Главного оперативного управления',
@@ -372,6 +387,11 @@ export const experience = [
     ],
   },
   {
+    group: 'international',
+    note: {
+      en: 'Seconded from the Armed Forces of the Kyrgyz Republic',
+      ru: 'Командирован из Вооружённых сил Кыргызской Республики',
+    },
     role: {
       en: 'Military Observer (UN Military Expert on Mission)',
       ru: 'Военный наблюдатель (военный эксперт ООН в миссии)',
@@ -405,6 +425,7 @@ export const experience = [
     ],
   },
   {
+    group: 'military',
     role: {
       en: 'Military Officer: Platoon Commander to Battalion Chief of Staff',
       ru: 'Офицер: от командира взвода до начальника штаба батальона',

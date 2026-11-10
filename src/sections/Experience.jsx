@@ -4,6 +4,7 @@ import { JOBS_VISIBLE, experience, gallery, sections, ui } from '../data/content
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import { ChevronIcon } from '../components/Icons'
+import CareerNumbers from '../components/CareerNumbers'
 
 /** Turns "03/2024" into "Mar 2024" (or "мар. 2024" in Russian). */
 function formatDate(value, lang) {
@@ -172,6 +173,11 @@ export default function Experience() {
           const jobs = experience.filter((j) => j.group === g.key)
           return <JobColumn key={g.key} group={g} jobs={jobs} delay={gi * 100} />
         })}
+      </div>
+
+      {/* Key numbers */}
+      <div className="mt-16">
+        <CareerNumbers />
       </div>
 
       {/* Photo gallery */}

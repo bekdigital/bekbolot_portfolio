@@ -87,3 +87,9 @@ export const CheckIcon = (p) => (
     <path d="M5 12l5 5 9-10" />
   </svg>
 )
+export const TelegramIcon = (p) => (
+  <svg {...base} {...p}>
+    <path d="M21 4L3 11l6 2 2 6 3-4 5 4 2-15z" />
+    <path d="M9 13l12-9" />
+  </svg>
+)

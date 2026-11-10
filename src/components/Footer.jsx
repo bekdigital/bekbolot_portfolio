@@ -1,6 +1,6 @@
 import { useApp } from '../context/AppContext'
 import { profile, ui } from '../data/content'
-import { ArrowUpIcon, LinkedInIcon, MailIcon } from './Icons'
+import { ArrowUpIcon, LinkedInIcon, MailIcon, TelegramIcon } from './Icons'
 
 export default function Footer() {
   const { t } = useApp()
@@ -34,6 +34,19 @@ export default function Footer() {
                 <LinkedInIcon width={18} height={18} />
               </a>
             </li>
+            {profile.telegram && (
+              <li>
+                <a
+                  href={`https://t.me/${profile.telegram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-navy-600 transition-colors hover:border-accent hover:text-white"
+                >
+                  <TelegramIcon width={18} height={18} />
+                </a>
+              </li>
+            )}
           </ul>
         </div>
 

@@ -165,10 +165,14 @@ export const about = {
 //                                  tagged with that word, calculated
 //                                  automatically (grows while a job is current)
 //   list: [ { en, ru }, ... ]    – optional short list under the label
+//   visual: 'army' | 'un' | 'diplomatic' | 'peacekeeping' | 'languages' | 'flags'
+//                                – picture at the top of the card
+//   image: '/numbers/army.jpg'   – optional own photo instead of the picture
 export const stats = [
-  { value: '24', label: { en: 'Years of army service', ru: 'Лет службы в армии' } },
+  { value: '24', visual: 'army', label: { en: 'Years of army service', ru: 'Лет службы в армии' } },
   {
     sumOf: 'un',
+    visual: 'un',
     label: {
       en: 'UN experience: UNSMIS, UNAMID and UNDP',
       ru: 'Опыт работы в ООН: МООННС, ЮНАМИД и ПРООН',
@@ -176,6 +180,7 @@ export const stats = [
   },
   {
     sumOf: 'diplomatic',
+    visual: 'diplomatic',
     label: {
       en: 'Experience with diplomatic missions: EU Delegation, World Bank',
       ru: 'Работа с дипмиссиями: Представительство ЕС, Всемирный банк',
@@ -183,6 +188,7 @@ export const stats = [
   },
   {
     value: '2',
+    visual: 'peacekeeping',
     label: {
       en: 'UN peacekeeping missions: Syria (UNSMIS) and Darfur (UNAMID)',
       ru: 'Миротворческие миссии ООН: Сирия (МООННС) и Дарфур (ЮНАМИД)',
@@ -190,6 +196,7 @@ export const stats = [
   },
   {
     value: '6',
+    visual: 'languages',
     label: { en: 'Languages', ru: 'Языков' },
     list: [
       { en: 'English – fluent', ru: 'Английский — свободно' },
@@ -202,6 +209,7 @@ export const stats = [
   },
   {
     value: '4',
+    visual: 'flags',
     label: {
       en: 'Countries of education: Kyrgyzstan, Türkiye, Germany, France',
       ru: 'Страны обучения: Кыргызстан, Турция, Германия, Франция',

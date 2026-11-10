@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useApp } from '../context/AppContext'
 import { about, experience, sections, stats, ui } from '../data/content'
 import { ChevronIcon } from '../components/Icons'
+import StatVisual from '../components/StatVisual'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 
@@ -95,26 +96,45 @@ export default function About() {
         {t(ui.inNumbers)}
       </h3>
       <ul className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-        {stats.map((s, i) => (
-          <Reveal as="li" key={i} delay={(i % 3) * 80} className={`card p-4 sm:p-6 ${s.list || i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
-            <p className="text-xl font-bold tracking-tight text-accent-dark dark:text-accent-light sm:text-3xl">
-              {s.sumOf ? formatTime(totalTime(s.sumOf), lang) : t(s.value)}
-            </p>
-            <p className="mt-2 text-sm leading-snug text-navy-600 dark:text-navy-200">{t(s.label)}</p>
-            {s.list && (
-              <ul className="mt-3 flex flex-wrap gap-1.5">
-                {s.list.map((item, j) => (
-                  <li
-                    key={j}
-                    className="rounded-full border border-navy-200 bg-navy-50 px-2.5 py-0.5 text-xs text-navy-700 dark:border-navy-700 dark:bg-navy-800/60 dark:text-navy-100"
-                  >
-                    {t(item)}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Reveal>
-        ))}
+        {stats.map((s, i) => {
+          const isUN = s.visual === 'un'
+          return (
+            <Reveal
+              as="li"
+              key={i}
+              delay={(i % 3) * 80}
+              className={`card overflow-hidden ${s.list || i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''} ${
+                isUN ? 'border-transparent !bg-[#009EDB] dark:!bg-[#0077B6]' : ''
+              }`}
+            >
+              <StatVisual visual={s.visual} image={s.image} imageAlt={t(s.label)} />
+              <div className="p-4 sm:p-5">
+                <p
+                  className={`text-xl font-bold tracking-tight sm:text-3xl ${
+                    isUN ? 'text-white' : 'text-accent-dark dark:text-accent-light'
+                  }`}
+                >
+                  {s.sumOf ? formatTime(totalTime(s.sumOf), lang) : t(s.value)}
+                </p>
+                <p className={`mt-2 text-sm leading-snug ${isUN ? 'text-white/90' : 'text-navy-600 dark:text-navy-200'}`}>
+                  {t(s.label)}
+                </p>
+                {s.list && (
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    {s.list.map((item, j) => (
+                      <li
+                        key={j}
+                        className="rounded-full border border-navy-200 bg-navy-50 px-2.5 py-0.5 text-xs text-navy-700 dark:border-navy-700 dark:bg-navy-800/60 dark:text-navy-100"
+                      >
+                        {t(item)}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </Reveal>
+          )
+        })}
       </ul>
     </Section>
   )

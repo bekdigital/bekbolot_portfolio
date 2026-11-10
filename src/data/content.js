@@ -98,6 +98,10 @@ export const sections = {
   experience: {
     title: { en: 'Professional Experience', ru: 'Профессиональный опыт' },
     eyebrow: { en: 'Career', ru: 'Карьера' },
+    intro: {
+      en: 'I began my career in the Armed Forces of the Kyrgyz Republic in 1997 and served until 2021, rising from platoon commander to Deputy Chief of the Operational Planning Directorate of the General Staff. I led operational planning, served with the UN mission in Darfur and helped draft key national documents, including the Military Doctrine and the first Annual Military Readiness Plan in the Kyrgyz language. Since 2021 I have continued my career in security for diplomatic missions and international organisations, including the EU Delegation, the World Bank and UNDP.',
+      ru: 'Свою карьеру я начал в 1997 году в Вооружённых силах Кыргызской Республики и прослужил до 2021 года, пройдя путь от командира взвода до заместителя начальника Оперативно-планового управления Генерального штаба. Руководил оперативным планированием, служил в миссии ООН в Дарфуре и участвовал в разработке важных государственных документов, в том числе Военной доктрины и первого Годового плана боевой готовности на кыргызском языке. С 2021 года продолжаю карьеру в сфере безопасности дипломатических представительств и международных организаций — Представительства ЕС, Всемирного банка и ПРООН.',
+    },
   },
   education: { title: { en: 'Education', ru: 'Образование' }, eyebrow: { en: 'Academic', ru: 'Академическое' } },
   training: {

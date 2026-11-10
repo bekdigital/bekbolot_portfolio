@@ -125,7 +125,12 @@ const GROUPS = [
 export default function Experience() {
   const { t } = useApp()
   return (
-    <Section id="experience" eyebrow={sections.experience.eyebrow} title={sections.experience.title}>
+    <Section
+      id="experience"
+      eyebrow={sections.experience.eyebrow}
+      title={sections.experience.title}
+      intro={sections.experience.intro}
+    >
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         {GROUPS.map((g, gi) => {
           const jobs = experience.filter((j) => j.group === g.key)

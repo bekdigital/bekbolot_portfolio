@@ -90,7 +90,11 @@ export default function About() {
       </div>
 
       {/* Key numbers */}
-      <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+      <h3 className="mt-14 flex items-center gap-3 text-xl font-semibold text-navy-950 dark:text-white">
+        <span aria-hidden="true" className="h-6 w-1 rounded-full bg-accent" />
+        {t(ui.inNumbers)}
+      </h3>
+      <ul className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {stats.map((s, i) => (
           <Reveal as="li" key={i} delay={(i % 3) * 80} className={`card p-4 sm:p-6 ${s.list || i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
             <p className="text-xl font-bold tracking-tight text-accent-dark dark:text-accent-light sm:text-3xl">

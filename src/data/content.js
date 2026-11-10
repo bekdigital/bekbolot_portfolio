@@ -72,6 +72,7 @@ export const ui = {
   coursesHeading: { en: 'Courses & training', ru: 'Курсы и подготовка' },
   details: { en: 'Details', ru: 'Подробнее' },
   readMore: { en: 'Read more', ru: 'Читать далее' },
+  inNumbers: { en: 'My career in numbers', ru: 'Моя карьера в цифрах' },
   readLess: { en: 'Show less', ru: 'Свернуть' },
   militaryCareer: { en: 'Military Career', ru: 'Военная карьера' },
   militaryCareerHint: { en: 'Armed Forces of the Kyrgyz Republic', ru: 'Вооружённые силы Кыргызской Республики' },

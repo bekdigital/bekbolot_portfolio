@@ -196,8 +196,8 @@ export const stats = [
       { en: 'Russian – fluent', ru: 'Русский — свободно' },
       { en: 'Turkish – fluent', ru: 'Турецкий — свободно' },
       { en: 'Kyrgyz – native', ru: 'Кыргызский — родной' },
-      { en: 'German – intermediate', ru: 'Немецкий — средний' },
-      { en: 'French – basic', ru: 'Французский — базовый' },
+      { en: 'German – B1', ru: 'Немецкий — B1' },
+      { en: 'French – B1', ru: 'Французский — B1' },
     ],
   },
   {
@@ -864,7 +864,7 @@ export const languages = [
   { name: { en: 'Russian', ru: 'Русский' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
   { name: { en: 'Turkish', ru: 'Турецкий' }, level: 95, label: { en: 'Fluent (C2)', ru: 'Свободно (C2)' } },
   { name: { en: 'English', ru: 'Английский' }, level: 80, label: { en: 'Fluent (C1)', ru: 'Свободно (C1)' } },
-  { name: { en: 'French', ru: 'Французский' }, level: 30, label: { en: 'Basic', ru: 'Базовый' } },
+  { name: { en: 'French', ru: 'Французский' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
   { name: { en: 'German', ru: 'Немецкий' }, level: 50, label: { en: 'Intermediate (B1)', ru: 'Средний (B1)' } },
 ]
 
